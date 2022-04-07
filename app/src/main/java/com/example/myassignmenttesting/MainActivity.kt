@@ -24,8 +24,18 @@ class MainActivity : AppCompatActivity() {
         binding.submit.setOnClickListener {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
+            val address = binding.address.text.toString()
+            var gender = ""
+            if(binding.female.isChecked){
+                gender = "Female"
+            }
+            else if(binding.male.isChecked){
+                gender = "Male"
+            }
+            val age = Integer.parseInt(binding.age.text.toString())
+
             //val user = new User
-            val user = User(email, password)
+            val user = User(email, password,address,gender,age)
 
             db.collection("User").document("$email").set(user)
 
