@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyAssignmentTesting</string>
+    <string name="button">Button</string>
+    <string name="secand">SECAND</string>
 </resources>
