@@ -12,22 +12,27 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
     private lateinit var db : FirebaseFirestore
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         db = FirebaseFirestore.getInstance()
-        db.collection("User").whereEqualTo("email",intent.getStringArrayExtra("email")).get()
+
+        val email = intent.getStringExtra("email").toString()
+
+        db.collection("User").document("$email").get()
             .addOnSuccessListener {
-            for(document in it){
-                binding.textViewEmail.text = document.get("email").toString()
-                binding.textViewPassword.text = document.get("password").toString()
-            }
+
+                binding.textViewEmail.setText(it.get("email").toString())
+                binding.textViewPassword.setText(it.get("password").toString())
+                binding.textViewAddress.setText(it.get("address").toString())
+                binding.textViewGender.setText(it.get("gender").toString())
+                binding.textViewAge.setText(it.get("age").toString())
+
         }
             .addOnFailureListener{
-                Log.w("TAG","Error in getting document: $it")
+                Log.w("Firestore","Error in getting document: $it")
             }
 
     }

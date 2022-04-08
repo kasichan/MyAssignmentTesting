@@ -3,8 +3,11 @@ package com.example.myassignmenttesting
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.myassignmenttesting.databinding.ActivityMainBinding
 import com.example.myassignmenttesting.ui.main.MainFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -24,8 +27,18 @@ class MainActivity : AppCompatActivity() {
         binding.submit.setOnClickListener {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
+            val address = binding.address.text.toString()
+            var gender = ""
+            if(binding.female.isChecked){
+                gender = "Female"
+            }
+            else if(binding.male.isChecked){
+                gender = "Male"
+            }
+            val age = Integer.parseInt(binding.age.text.toString())
+
             //val user = new User
-            val user = User(email, password)
+            val user = User(email, password,address,gender,age)
 
             db.collection("User").document("$email").set(user)
 
@@ -33,8 +46,6 @@ class MainActivity : AppCompatActivity() {
 
             intent.putExtra("email",email)
             startActivity(intent)
-
         }
-
     }
 }
