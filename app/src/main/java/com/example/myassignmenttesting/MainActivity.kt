@@ -3,8 +3,11 @@ package com.example.myassignmenttesting
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.myassignmenttesting.databinding.ActivityMainBinding
 import com.example.myassignmenttesting.ui.main.MainFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -43,8 +46,6 @@ class MainActivity : AppCompatActivity() {
 
             intent.putExtra("email",email)
             startActivity(intent)
-
         }
-
     }
 }
