@@ -3,6 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.22135416666666666" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/drawable/ic_baseline_shopping_bag_24.xml" value="0.22135416666666666" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/activity_buyer_payment_option.xml" value="0.20520833333333333" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/activity_try_footer.xml" value="0.20520833333333333" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_chatroom.xml" value="0.1" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_enterotp.xml" value="0.20520833333333333" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_notification.xml" value="0.21354166666666666" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_payment_details.xml" value="0.20520833333333333" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_payment_option.xml" value="0.20520833333333333" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_payment_successful.xml" value="0.20520833333333333" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_product_details.xml" value="0.1" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_profile.xml" value="0.22" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_search.xml" value="0.1" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/layout/buyer_user_login.xml" value="0.33" />
+        <entry key="..\:/..AA.Degree/AAA.sem3/mobile app/..A.ass/MyAssignmentTesting/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Admin/Desktop/MyAssignmentTesting/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/Admin/Desktop/MyAssignmentTesting/app/src/main/res/drawable/ic_launcher_background.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/Admin/Desktop/MyAssignmentTesting/app/src/main/res/layout/activity_main.xml" value="0.1" />

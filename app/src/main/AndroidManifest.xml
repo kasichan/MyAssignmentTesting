@@ -10,31 +10,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAssignmentTesting">
         <activity
-            android:name=".ui.main.SplashScreenActivity"
-            android:exported="true"
-            android:theme="@style/SplashScreenTheme"
-            >
+            android:name=".buyer_notification_activity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
-
-
         </activity>
+        <activity
+            android:name=".buyer_enterotp_activity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".buyer_payment_option"
+            android:exported="true"></activity>
+        <activity
+            android:name=".buyer_payment_details"
+            android:exported="true" />
+        <activity
+            android:name=".buyer_payment_successful_activity"
+            android:exported="true" />
+        <activity
+            android:name=".buyer_user_login_activity"
+            android:exported="true" />
+        <activity
+            android:name=".buyer_search_activity"
+            android:exported="true" />
+        <activity
+            android:name=".buyer_product_details_activity"
+            android:exported="true" />
+        <activity
+            android:name=".buyer_chatroom_activity"
+            android:exported="true" />
+        <activity
+            android:name=".buyer_profile_activity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/SplashScreenTheme" />
         <activity
             android:name=".MainActivity2"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
