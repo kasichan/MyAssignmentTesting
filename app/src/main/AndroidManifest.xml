@@ -10,31 +10,70 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAssignmentTesting">
         <activity
-            android:name=".ui.main.SplashScreenActivity"
-            android:exported="true"
-            android:theme="@style/SplashScreenTheme"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-
-
+            android:name=".register_activity"
+            android:exported="true" >
         </activity>
         <activity
-            android:name=".MainActivity2"
-            android:exported="false"/>
-
+            android:name=".delete_product_activity"
+            android:exported="true">
+        </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".buyer_homepgae_activity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".confirm_order_activity"
+            android:exported="true" />
+        <activity
+            android:name=".shipping_activity"
+            android:exported="true" />
+        <activity
+            android:name=".edit_product_activity"
             android:exported="true">
 
-
-
         </activity>
+        <activity
+            android:name=".seller_search_activity"
+            android:exported="true" />
+        <activity
+            android:name=".my_products_activity"
+            android:exported="true"/>
+        <activity
+            android:name=".seller_dashboard_activity"
+            android:exported="true" />
+        <activity
+            android:name=".logout_activity"
+            android:exported="true" />
+        <activity
+            android:name=".deactivate_account_activity"
+            android:exported="true" />
+        <activity
+            android:name=".contact_us_activity"
+            android:exported="true" />
+        <activity
+            android:name=".change_password_activity"
+            android:exported="true" />
+        <activity
+            android:name=".profile_setting_activity"
+            android:exported="true" />
+        <activity
+            android:name=".edit_profile_activity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/SplashScreenTheme" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
