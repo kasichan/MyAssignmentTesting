@@ -80,12 +80,14 @@
         android:hint="Enter your age"
         android:inputType="number"
         android:textSize="25sp" />
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
 
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit" />
+
+
 
 
 </LinearLayout>
