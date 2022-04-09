@@ -10,8 +10,11 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import com.example.myassignmenttesting.MainActivity2
+import com.example.myassignmenttesting.LoggedIn
+import com.example.myassignmenttesting.MainActivity
+import com.example.myassignmenttesting.buyer_profile_activity
 import com.example.myassignmenttesting.databinding.BuyerUserLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -23,12 +26,11 @@ class BuyerLoginActivity() : AppCompatActivity() {
 
     private lateinit var progressDialog: ProgressDialog
 
-    //    private lateinit var db: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
     private var email = ""
     private var password = ""
-
+    private lateinit var firebaseAuth : FirebaseAuth
 
 
 
@@ -47,16 +49,18 @@ class BuyerLoginActivity() : AppCompatActivity() {
         progressDialog.setMessage("Logging in...")
         progressDialog.setCanceledOnTouchOutside(false)
 
-//        db = FirebaseAuth.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-        //verifyUser()
+
+        verifyUser()
 
         binding.loginButton.setOnClickListener {
             validateLoginDetails()
         }
 
         binding.registerButton.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
@@ -71,33 +75,53 @@ class BuyerLoginActivity() : AppCompatActivity() {
         else if (TextUtils.isEmpty(password)) {
             binding.password.error = "Please enter password"
         }
-        else {
+        else
+        {
             //all ok
-            progressDialog.show()
-            db.collection("User").whereEqualTo("email", email)
-                .whereEqualTo("password", password).get().addOnSuccessListener {
-                    progressDialog.dismiss()
+           login()
+        }
 
-                    //val editor: SharedPreferences.Editor = sharedpreferences.edit()
-                    //editor.putString("email", email)
 
-                    for(document in it){
-                        Toast.makeText(this, "Welcome ${document.get("username")}"  , Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MainActivity2::class.java))
-                        finish()
-                    }
+    }
 
+    private fun login(){
+        progressDialog.show()
+    firebaseAuth.signInWithEmailAndPassword(email,password)
+        .addOnSuccessListener {
+            progressDialog.dismiss()
+            val firebaseUser = firebaseAuth.currentUser
+            val email = firebaseUser!!.email
+            var username = ""
+            db.collection("User").whereEqualTo("email", email).whereEqualTo("password", password).get().addOnSuccessListener {
+                for(document in it){
+                    Toast.makeText(this, "Welcome ${document.get("username")}"  , Toast.LENGTH_SHORT).show()
+                    username = document.get("username").toString()
                 }
+                var i = Intent(this, buyer_profile_activity::class.java)
+                i.putExtra("username",username)
+                startActivity(Intent(this, buyer_profile_activity::class.java))
+                finish()
+            }
+        }
 
-                .addOnFailureListener{
-                        progressDialog.dismiss()
-                        Toast.makeText(this, "Login in failed", Toast.LENGTH_SHORT).show()
-                }
+        .addOnFailureListener {
+            progressDialog.dismiss()
+            Toast.makeText(this, "Login Failed"  , Toast.LENGTH_SHORT).show()
+        }
 
+
+    }
+
+        private fun verifyUser(){
+            val firebaseUser = firebaseAuth.currentUser
+            if(firebaseUser!=null){
+                startActivity(Intent(this,buyer_profile_activity::class.java))
+                finish()
+            }
         }
     }
 
-}
+
 
 
 
