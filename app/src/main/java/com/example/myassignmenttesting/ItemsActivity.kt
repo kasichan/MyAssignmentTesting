@@ -23,6 +23,7 @@ class ItemsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_items)
+
         /**set adapter*/
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(this@ItemsActivity)
@@ -33,6 +34,7 @@ class ItemsActivity : AppCompatActivity() {
         /**set Firebase Database*/
         mStorage = FirebaseStorage.getInstance()
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("teachers_uploads")
+
         mDBListener = mDatabaseRef!!.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@ItemsActivity,error.message, Toast.LENGTH_SHORT).show()
