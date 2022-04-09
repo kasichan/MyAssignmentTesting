@@ -2,12 +2,11 @@ package com.example.myassignmenttesting
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myassignmenttesting.databinding.ActivityDetailsBinding
 import com.example.myassignmenttesting.uitel.loadImage
 import kotlinx.android.synthetic.main.activity_details.*
 
+
 class DetailsActivity : AppCompatActivity() {
-    lateinit var binding: ActivityDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

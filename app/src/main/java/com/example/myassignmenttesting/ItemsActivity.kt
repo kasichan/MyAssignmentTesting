@@ -31,6 +31,7 @@ class ItemsActivity : AppCompatActivity() {
         mTeachers = ArrayList()
         listAdapter = ListAdapter(this@ItemsActivity,mTeachers)
         mRecyclerView.adapter = listAdapter
+
         /**set Firebase Database*/
         mStorage = FirebaseStorage.getInstance()
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("teachers_uploads")

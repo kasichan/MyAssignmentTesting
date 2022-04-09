@@ -73,10 +73,14 @@ class UploadActivity : AppCompatActivity() {
 
     private fun uploadFile() {
         if (mImageUri != null) {
+            val newFileName =System.currentTimeMillis().toString()
             val fileReference = mStorageRef!!.child(
-                System.currentTimeMillis()
-                    .toString() + "." + getFileExtension(mImageUri!!)
+                newFileName + "." + getFileExtension(mImageUri!!)
+
             )
+
+
+
             progressBar.visibility = View.VISIBLE
             progressBar.isIndeterminate = true
             mUploadTask = fileReference.putFile(mImageUri!!)
@@ -95,7 +99,7 @@ class UploadActivity : AppCompatActivity() {
                         .show()
                     val upload = Teacher(
                         name = nameEditText!!.text.toString().trim { it <= ' ' },
-                        imageUrl = mImageUri.toString(),
+                        imageUrl = newFileName,
                         description =  descriptionEditText!!.text.toString().trim { it <= ' ' }
                     )
                     val uploadId = mDatabaseRef!!.push().key
@@ -120,7 +124,7 @@ class UploadActivity : AppCompatActivity() {
     }
 
     private fun  openImagesActivity() {
-        startActivity(Intent(this@UploadActivity, MainActivity::class.java))
+        startActivity(Intent(this@UploadActivity, testViewImage::class.java))
     }
 
 }
