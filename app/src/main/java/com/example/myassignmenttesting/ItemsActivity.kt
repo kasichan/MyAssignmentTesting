@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.example.myassignmenttesting.adapter.ListAdapter
-import com.example.myassignmenttesting.model.Teacher
+import com.example.myassignmenttesting.model.Product
 import kotlinx.android.synthetic.main.activity_items.*
 
 
@@ -17,7 +17,7 @@ class ItemsActivity : AppCompatActivity() {
     private var mStorage:FirebaseStorage? = null
     private var mDatabaseRef:DatabaseReference? = null
     private var mDBListener:ValueEventListener? = null
-    private lateinit var mTeachers:MutableList<Teacher>
+    private lateinit var mProducts:MutableList<Product>
     private lateinit var listAdapter:ListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +28,13 @@ class ItemsActivity : AppCompatActivity() {
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(this@ItemsActivity)
         myDataLoaderProgressBar.visibility = View.VISIBLE
-        mTeachers = ArrayList()
-        listAdapter = ListAdapter(this@ItemsActivity,mTeachers)
+        mProducts = ArrayList()
+        listAdapter = ListAdapter(this@ItemsActivity,mProducts)
         mRecyclerView.adapter = listAdapter
+
         /**set Firebase Database*/
         mStorage = FirebaseStorage.getInstance()
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("teachers_uploads")
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Product_images")
 
         mDBListener = mDatabaseRef!!.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
@@ -43,11 +44,11 @@ class ItemsActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                mTeachers.clear()
-                for (teacherSnapshot in snapshot.children){
-                    val upload = teacherSnapshot.getValue(Teacher::class.java)
-                    upload!!.key = teacherSnapshot.key
-                    mTeachers.add(upload)
+                mProducts.clear()
+                for (ProductSnapshot in snapshot.children){
+                    val upload = ProductSnapshot.getValue(Product::class.java)
+                    upload!!.key = ProductSnapshot.key
+                    mProducts.add(upload)
 
                 }
                 listAdapter.notifyDataSetChanged()

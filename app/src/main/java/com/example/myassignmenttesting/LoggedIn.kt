@@ -5,7 +5,6 @@
 //import android.os.Bundle
 //import androidx.appcompat.app.AppCompatActivity
 //import com.google.firebase.firestore.FirebaseFirestore
-//import kotlinx.android.synthetic.main.buyer_user_login.*
 //
 //class LoggedIn : AppCompatActivity() {
 //    private lateinit var db : FirebaseFirestore
