@@ -23,16 +23,16 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="300px"
-        android:hint="Username"
+        android:hint="Email"
         android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50px"

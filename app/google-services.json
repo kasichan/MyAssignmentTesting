@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "574327758623",
+    "project_id": "secand-bd95e",
+    "storage_bucket": "secand-bd95e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574327758623:android:b63d00c3fce47c17d5da2a",
+        "android_client_info": {
+          "package_name": "com.example.myassignmenttesting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574327758623-s32vcuiolvspht8vdeg7nv51kemgmkln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCANmGec8e_oIKycvuwwXicRiyA4cT8QDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574327758623-s32vcuiolvspht8vdeg7nv51kemgmkln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

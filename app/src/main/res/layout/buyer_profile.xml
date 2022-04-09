@@ -16,10 +16,10 @@
             android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:src="@drawable/ic_baseline_account_circle_24" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -40,13 +40,14 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="30dp"
                 android:text="Chat" />
+
             <Button
                 android:id="@+id/button1"
                 android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_height="48dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="30dp"
+                android:layout_weight="1"
                 android:text="Setting" />
         </LinearLayout>
 
@@ -112,9 +113,21 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="393dp"
-        android:paddingTop="200dp"
+        android:layout_height="287dp"
         android:paddingLeft="100dp"
+        android:paddingTop="200dp"
         android:text="Content Wallet / Favorite / Review" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="141dp"
+        android:layout_height="79dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="#FF0000"
+        android:text="Logout"
+        android:textColor="#000000" />
 
 </LinearLayout>
