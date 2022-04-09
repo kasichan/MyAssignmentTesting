@@ -10,17 +10,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassignmenttesting.R
-import com.example.myassignmenttesting.model.Teacher
-import com.example.myassignmenttesting.uitel.loadImage
 import com.example.myassignmenttesting.DetailsActivity
+import com.example.myassignmenttesting.model.Product
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
-class ListAdapter (var mContext:Context,var teacherList:List<Teacher>):
+class ListAdapter(var mContext:Context, var teacherList: MutableList<Product>):
 RecyclerView.Adapter<ListAdapter.ListViewHolder>()
 {
     inner class ListViewHolder(var v:View): RecyclerView.ViewHolder(v){
-        var imgT = v.findViewById<ImageView>(R.id.teacherImageView)
+        var imgT = v.findViewById<ImageView>(R.id.ProductImageView)
         var nameT = v.findViewById<TextView>(R.id.nameTextView)
         var descriT = v.findViewById<TextView>(R.id.descriptionTextView)
 
@@ -40,7 +39,7 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
         holder.nameT.text = newList.imageUrl
         holder.descriT.text = newList.description
 
-        val storageRef = FirebaseStorage.getInstance().reference.child("teachers_uploads/$imageName")
+        val storageRef = FirebaseStorage.getInstance().reference.child("Product_images/$imageName")
         val localfile = File.createTempFile("tempImage","jpeg")
         storageRef.getFile(localfile)
             .addOnSuccessListener {

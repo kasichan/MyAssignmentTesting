@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/teacherImageView"
+            android:id="@+id/ProductImageView"
             android:src="@mipmap/ic_launcher"
             android:layout_width="150dp"
             android:layout_height="150dp"/>
@@ -26,7 +26,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:text="Teacher Name"
+                android:text="Product Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView

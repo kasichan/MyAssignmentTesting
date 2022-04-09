@@ -19,7 +19,7 @@ class DetailsActivity : AppCompatActivity() {
 
         nameDetailTextView.text = nameT
         descriptionDetailTextView.text = desT
-        teacherDetailImageView.loadImage(imgT)
+        ProductDetailImageView.loadImage(imgT)
 
 
     }

@@ -10,7 +10,6 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import com.example.myassignmenttesting.LoggedIn
 import com.example.myassignmenttesting.MainActivity
 import com.example.myassignmenttesting.buyer_profile_activity
 import com.example.myassignmenttesting.databinding.BuyerUserLoginBinding
