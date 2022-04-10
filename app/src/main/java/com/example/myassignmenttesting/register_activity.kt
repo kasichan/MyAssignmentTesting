@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.example.myassignmenttesting.databinding.ActivityMainBinding
@@ -48,6 +49,18 @@ class register_activity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         db = FirebaseFirestore.getInstance()
+
+
+        binding.male .setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                binding.female.setChecked(false)
+            }
+        })
+        binding.female.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                binding.male.setChecked(false)
+            }
+        })
 
         binding.submit.setOnClickListener {
             email = binding.email.text.toString()
@@ -131,8 +144,8 @@ class register_activity : AppCompatActivity() {
                 progressDialog.dismiss()
                 val firebaseUser = firebaseAuth.currentUser
                 //val authEmail = firebaseUser!!.email
-
-                val user = User(email, username,password,address,gender,age)
+                val status = "activated"
+                val user = User(email, username,password,address,gender,age,status)
 
                 db.collection("User").document("$email").set(user)
 
@@ -146,8 +159,8 @@ class register_activity : AppCompatActivity() {
             }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed() //go back to previous activity
-        return super.onSupportNavigateUp()
+    override fun onBackPressed() {
+        // code here to show dialog
+        super.onBackPressed() // optional depending on your needs
     }
 }

@@ -31,8 +31,7 @@ class BuyerLoginActivity() : AppCompatActivity() {
 
     private var email = ""
     private var password = ""
-    private lateinit var firebaseAuth : FirebaseAuth
-
+    private lateinit var firebaseAuth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,55 +71,86 @@ class BuyerLoginActivity() : AppCompatActivity() {
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             //invalid email format
             binding.email.error = "Invalid email format"
-        }
-        else if (TextUtils.isEmpty(password)) {
+        } else if (TextUtils.isEmpty(password)) {
             binding.password.error = "Please enter password"
-        }
-        else
-        {
+        } else {
             //all ok
-           login()
+            login()
         }
 
 
     }
 
-    private fun login(){
+    private fun login() {
         progressDialog.show()
-    firebaseAuth.signInWithEmailAndPassword(email,password)
-        .addOnSuccessListener {
-            progressDialog.dismiss()
-            val firebaseUser = firebaseAuth.currentUser
-            val email = firebaseUser!!.email
-            var username = ""
-            db.collection("User").whereEqualTo("email", email).whereEqualTo("password", password).get().addOnSuccessListener {
-                for(document in it){
-                    Toast.makeText(this, "Welcome ${document.get("username")}"  , Toast.LENGTH_SHORT).show()
-                    username = document.get("username").toString()
-                }
-                var i = Intent(this, buyer_profile_activity::class.java)
-                i.putExtra("username",username)
-                startActivity(Intent(this, buyer_profile_activity::class.java))
-                finish()
+
+        db.collection("User").whereEqualTo("email", email).whereEqualTo("status", "deactivated")
+            .get().addOnSuccessListener {
+            for (document in it) {
+                Toast.makeText(
+                    this,
+                    "Your account has been deactivated",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+//                startActivity(Intent(this,BuyerLoginActivity::class.java))
+//                finish()
+
             }
+
         }
 
-        .addOnFailureListener {
-            progressDialog.dismiss()
-            Toast.makeText(this, "Login Failed"  , Toast.LENGTH_SHORT).show()
-        }
+
+
+
+        db.collection("User").whereEqualTo("email", email).whereEqualTo("status", "activated")
+            .get().addOnSuccessListener {
+                firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnSuccessListener {
+                        progressDialog.dismiss()
+                        val firebaseUser = firebaseAuth.currentUser
+                        val email = firebaseUser!!.email
+                        var username = ""
+                        db.collection("User").whereEqualTo("email", email)
+                            .whereEqualTo("password", password)
+                            .get().addOnSuccessListener {
+
+                                for (document in it) {
+                                    Toast.makeText(
+                                        this,
+                                        "Welcome ${document.get("username")}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    username = document.get("username").toString()
+                                }
+                                var i = Intent(this, buyer_profile_activity::class.java)
+                                i.putExtra("username", username)
+                                startActivity(Intent(this, buyer_profile_activity::class.java))
+                                finish()
+                            }
+
+
+                    }
+
+                    .addOnFailureListener {
+                        progressDialog.dismiss()
+                        Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                    }
+
+
+            }
 
 
     }
 
-        private fun verifyUser(){
-            val firebaseUser = firebaseAuth.currentUser
-            if(firebaseUser!=null){
-                startActivity(Intent(this,buyer_profile_activity::class.java))
-                finish()
-            }
+    private fun verifyUser() {
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser != null) {
+            startActivity(Intent(this, buyer_profile_activity::class.java))
+            finish()
         }
     }
+}
 
 
 

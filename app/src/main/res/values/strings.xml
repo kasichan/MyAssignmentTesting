@@ -8,4 +8,5 @@
     <string name="app_name2">NavigationDrawer</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="deactivate_confirmation">Deactivate confirmation</string>
 </resources>

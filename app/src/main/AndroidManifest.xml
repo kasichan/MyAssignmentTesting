@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myassignmenttesting">
 
     <application
@@ -20,32 +21,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.main.BuyerLoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".buyer_profile_activity"
             android:exported="false" />
-
+        <activity
+            android:name=".profile_setting_activity"
+            android:exported="false" />
+        <activity
+            android:name=".seller_dashboard_activity"
+            android:exported="false" />
         <activity
             android:name=".edit_profile_activity"
             android:exported="false"
-            android:parentActivityName=".buyer_profile_activity">
-        </activity>
-
+            android:parentActivityName=".buyer_profile_activity"></activity>
+        <activity
+            android:name=".change_password_activity"
+            android:exported="false" />
         <activity
             android:name=".register_activity"
             android:exported="false" />
+
+        <activity
+            android:name=".confirmation_fragment"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
     </application>
 
 </manifest>
