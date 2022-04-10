@@ -9,6 +9,8 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.webkit.MimeTypeMap
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -17,7 +19,6 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.example.myassignmenttesting.model.Product
 import kotlinx.android.synthetic.main.activity_upload.*
-import java.util.logging.Level.parse
 
 class UploadActivity : AppCompatActivity() {
 
@@ -28,8 +29,23 @@ class UploadActivity : AppCompatActivity() {
     private val PICK_IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload)
+
+        val spinner: Spinner = category
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.category,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+        }
         /**set data*/
 
         mStorageRef = FirebaseStorage.getInstance().getReference("Product_images")
@@ -42,6 +58,7 @@ class UploadActivity : AppCompatActivity() {
                     "An Upload is Still in Progress",
                     Toast.LENGTH_SHORT).show()
             }
+
             else{
                 uploadFile()
             }
@@ -71,6 +88,7 @@ class UploadActivity : AppCompatActivity() {
     }
 
     private fun uploadFile() {
+
         if (mImageUri != null) {
             val newFileName =System.currentTimeMillis().toString()
             val fileReference = mStorageRef!!.child(
@@ -94,12 +112,17 @@ class UploadActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     )
                         .show()
+
+                    if(nameEditText!=null){
+
+                    }
+
                     val upload = Product(
                         name = nameEditText!!.text.toString().trim { it <= ' ' },
                         imageUrl = newFileName,
                         description =  descriptionEditText!!.text.toString().trim { it <= ' ' },
                         price = priceEditText!!.text.toString().trim { it <= ' ' }.toDouble(),
-                        category = categoryEditText!!.text.toString().trim { it <= ' ' },
+                        category = category.selectedItem.toString(),
                         quantity = Integer.parseInt(quantityEditText!!.text.toString().trim { it <= ' ' }),
                     )
                     val uploadId = mDatabaseRef!!.push().key
@@ -117,7 +140,9 @@ class UploadActivity : AppCompatActivity() {
                         (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount)
                     progressBar.progress = progress.toInt()
                 }
-        } else {
+        }
+
+        else {
             Toast.makeText(this, "You haven't Selected Any file selected", Toast.LENGTH_SHORT)
                 .show()
         }
@@ -126,5 +151,7 @@ class UploadActivity : AppCompatActivity() {
     private fun  openImagesActivity() {
         startActivity(Intent(this@UploadActivity, UploadActivity::class.java))
     }
+
+
 
 }

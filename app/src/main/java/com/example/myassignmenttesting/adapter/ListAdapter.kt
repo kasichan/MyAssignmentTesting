@@ -40,9 +40,8 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
        var newList = productList[position]
         var imageName = newList.imageUrl+".jpg"
 
-        holder.nameT.text = newList.imageUrl
+        holder.nameT.text = newList.name
         holder.descriT.text = newList.description
-
         holder.priceT.text = newList.price.toString()
         holder.categoryT.text = newList.category
         holder.quantityT.text = newList.quantity.toString()
@@ -59,18 +58,23 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
 
             val name = newList.name
             val descrip = newList.description
-            val imgUri = newList.imageUrl
-            val price = newList.price
+            val imgUri = newList.imageUrl+".jpg"
+            val price = newList.price.toString()
             val category = newList.category
-            val quantity = newList.quantity
-
+            val quantity = newList.quantity.toString()
+            val imageName = newList.imageUrl
             val mIntent = Intent(mContext, DetailsActivity::class.java)
-            mIntent.putExtra("NAMET",name)
-            mIntent.putExtra("DESCRIT",descrip)
-            mIntent.putExtra("IMGURI",imgUri)
-            mIntent.putExtra("PRICET",price)
-            mIntent.putExtra("CATT",category)
-            mIntent.putExtra("QUANT",quantity)
+
+                    mIntent.putExtra("NAMET",name)
+                    mIntent.putExtra("DESCRIT",descrip)
+                    mIntent.putExtra("IMGURI",imgUri)
+                    mIntent.putExtra("PRICET",price)
+                    mIntent.putExtra("CATT",category)
+                    mIntent.putExtra("QUANT",quantity)
+                    mIntent.putExtra("IMGNAMET",imageName)
+
+
+
 
             mContext.startActivity(mIntent)
         }
