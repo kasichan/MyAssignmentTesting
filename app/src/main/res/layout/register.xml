@@ -1,112 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/container"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".register_activity" >
+
+<TextView
+    android:id="@+id/textView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".register_activity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton29"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:srcCompat="@android:drawable/ic_media_previous" />
-
-        <TextView
-            android:id="@+id/textView55"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Register Page"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    android:layout_height="wrap_content"
+    android:paddingTop="25sp"
+    android:text="Register Account"
+    android:textAlignment="center"
+    android:textSize="30sp"
+    android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imageView19"
+        android:id="@+id/imageView21"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
+        android:src="@drawable/ic_baseline_shopping_bag_24" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName" />
+<EditText
+    android:id="@+id/email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Enter your email"
+    android:inputType="textEmailAddress"
+    android:textSize="25sp" />
 
-    <EditText
-        android:id="@+id/editTextPhone2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contact No"
-        android:inputType="phone" />
+<EditText
+    android:id="@+id/username"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Enter your username"
+    android:inputType="text"
+    android:textSize="25sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Male" />
+<EditText
+    android:id="@+id/password"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Enter your password"
+    android:inputType="textPassword"
+    android:textSize="25sp" />
 
-        <CheckBox
-            android:id="@+id/checkBox6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Female" />
-    </LinearLayout>
+<EditText
+    android:id="@+id/address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Enter your address"
+    android:inputType="textLongMessage"
+    android:textSize="25sp" />
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+<TextView
+    android:id="@+id/gender"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Choose Gender"
+    android:textAlignment="center"
+    android:textSize="20sp"
+    android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editTextTextPostalAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Address"
-        android:inputType="textPostalAddress" />
+<CheckBox
+    android:id="@+id/male"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Male" />
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword" />
+<CheckBox
+    android:id="@+id/female"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Female" />
 
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPassword" />
+<EditText
+    android:id="@+id/age"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Enter your age"
+    android:inputType="number"
+    android:textSize="25sp" />
 
     <Button
-        android:id="@+id/button52"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Submit" />
+        android:text="Register" />
+
+
+
 
 
 </LinearLayout>

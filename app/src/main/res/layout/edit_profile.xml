@@ -11,11 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="30dp"
             android:layout_height="30dp"
             app:srcCompat="@android:drawable/ic_media_previous"
+            tools:ignore="SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="1dp" />
 
         <TextView
@@ -38,79 +40,104 @@
         app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="New UserName"
+        android:hint="New username"
         android:inputType="textPersonName"
-        android:text="Abu" />
+        android:minHeight="48dp" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextPhone"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:hint="New Phone Number"-->
+<!--        android:inputType="phone"-->
+<!--        android:minHeight="48dp" />-->
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/editAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="New Phone Number"
-        android:inputType="phone" />
+        android:hint="Enter your age"
+        android:inputType="number"
+        android:textSize="18sp" />
+
+
+
+        <TextView
+            android:id="@+id/editGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose Gender"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/editMale"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Male" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/editFemale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Female" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="New Email"
-        android:inputType="textEmailAddress" />
+<!--    <EditText-->
+<!--        android:id="@+id/editEmail"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:hint="New Email"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:minHeight="48dp" />-->
 
 
     <EditText
-        android:id="@+id/editTextTextPostalAddress2"
+        android:id="@+id/editAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="New Address"
-        android:inputType="textPostalAddress" />
+        android:inputType="textPostalAddress"
+        android:minHeight="48dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/editPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="New Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword4"
+        android:id="@+id/confirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Confirm Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <Button
-        android:id="@+id/button24"
+        android:id="@+id/update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Submit" />
+        android:text="Update" />
 
 
 </LinearLayout>

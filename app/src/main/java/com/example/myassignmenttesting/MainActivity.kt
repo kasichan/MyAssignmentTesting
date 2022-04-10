@@ -50,12 +50,12 @@ class MainActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         binding.submit.setOnClickListener {
-             email = binding.email.text.toString()
+            email = binding.email.text.toString()
             username = binding.username.text.toString()
-             password = binding.password.text.toString()
-             address = binding.address.text.toString()
-             //gender = ""
-             //age = 0
+            password = binding.password.text.toString()
+            address = binding.address.text.toString()
+            //gender = ""
+            //age = 0
 
             if(binding.age.text.toString()==""){
                 age = 0
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun register(){
-    progressDialog.show()
+        progressDialog.show()
         firebaseAuth.createUserWithEmailAndPassword(email,password)
             .addOnSuccessListener {
                 progressDialog.dismiss()

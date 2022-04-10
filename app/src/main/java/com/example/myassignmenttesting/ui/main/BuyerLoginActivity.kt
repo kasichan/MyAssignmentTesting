@@ -10,9 +10,11 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+
 import com.example.myassignmenttesting.MainActivity
 import com.example.myassignmenttesting.buyer_profile_activity
 import com.example.myassignmenttesting.databinding.BuyerUserLoginBinding
+import com.example.myassignmenttesting.register_activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -58,7 +60,7 @@ class BuyerLoginActivity() : AppCompatActivity() {
         }
 
         binding.registerButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, register_activity::class.java))
             finish()
         }
     }
