@@ -14,11 +14,6 @@
             android:name=".ui.main.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/SplashScreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -36,6 +31,16 @@
         <activity
             android:name=".buyer_profile_activity"
             android:exported="false" />
+
+        <activity
+            android:name=".navigation_drawer_activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".edit_profile_activity"
