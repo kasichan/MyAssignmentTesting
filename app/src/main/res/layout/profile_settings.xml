@@ -28,14 +28,14 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button25"
+        android:id="@+id/editProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:text="Edit Profile" />
 
     <Button
-        android:id="@+id/button26"
+        android:id="@+id/changePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -49,14 +49,14 @@
         android:text="Contact US" />
 
     <Button
-        android:id="@+id/button28"
+        android:id="@+id/deactivateAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Deactivate Account" />
 
     <Button
-        android:id="@+id/button29"
+        android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

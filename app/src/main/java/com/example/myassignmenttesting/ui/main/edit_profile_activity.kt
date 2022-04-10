@@ -7,12 +7,14 @@ import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
 import android.view.MenuItem
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.annotation.MainThread
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.example.myassignmenttesting.databinding.EditProfileBinding
+import com.example.myassignmenttesting.databinding.EditProductBinding
 import com.example.myassignmenttesting.ui.main.BuyerLoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -36,6 +38,7 @@ class edit_profile_activity : AppCompatActivity() {
     var address = ""
     var gender = ""
     var age : Int = 0
+    var status = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,9 +56,22 @@ class edit_profile_activity : AppCompatActivity() {
 
         verifyUser()
 
+        binding.editMale.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                binding.editFemale.setChecked(false)
+            }
+        })
+        binding.editFemale.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                binding.editMale.setChecked(false)
+            }
+        })
+
         binding.update.setOnClickListener {
             validateUpdate()
         }
+
+
 
     }
 
@@ -64,7 +80,7 @@ class edit_profile_activity : AppCompatActivity() {
 
         if(firebaseUser!=null) {
             val currentEmail = firebaseUser.email.toString()
-            val user = User(currentEmail, username,password,address,gender,age)
+            val user = User(currentEmail, username,password,address,gender,age,status)
             db.collection("User").document("$currentEmail").set(user).addOnSuccessListener {
 
 
@@ -92,6 +108,7 @@ class edit_profile_activity : AppCompatActivity() {
         confirmPassword = binding.confirmPassword.text.toString()
         address = binding.editAddress.text.toString()
 
+
         if(binding.editAge.text.toString()==""){
             age = 0
         }else{
@@ -110,6 +127,7 @@ class edit_profile_activity : AppCompatActivity() {
         else{
             gender = ""
         }
+
 
 
         if(TextUtils.isEmpty(username)){
@@ -152,6 +170,7 @@ class edit_profile_activity : AppCompatActivity() {
             db.collection("User").whereEqualTo("email", email).get().addOnSuccessListener {
                 for (document in it) {
                     binding.editUsername.setText(document.get("username").toString())
+                    status = document.get("status").toString()
 
                     if(document.get("gender").toString() == "Male"){
                         binding.editMale.isChecked = true

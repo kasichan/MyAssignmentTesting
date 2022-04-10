@@ -37,13 +37,18 @@ class buyer_profile_activity : AppCompatActivity() {
         verifyUser()
 
         binding.setting.setOnClickListener {
-            startActivity(Intent(this,edit_profile_activity::class.java))
+            startActivity(Intent(this,profile_setting_activity::class.java))
             finish()
         }
 
         binding.logoutButton.setOnClickListener {
             firebaseAuth.signOut()
             verifyUser()
+        }
+
+        binding.sellerCenter.setOnClickListener {
+            startActivity(Intent(this,seller_dashboard_activity::class.java))
+            finish()
         }
     }
 
