@@ -15,10 +15,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
-import com.example.myassignmenttesting.MainActivity
-import com.example.myassignmenttesting.R
 import com.example.myassignmenttesting.model.Product
 import kotlinx.android.synthetic.main.activity_upload.*
+import java.util.logging.Level.parse
 
 class UploadActivity : AppCompatActivity() {
 
@@ -79,8 +78,6 @@ class UploadActivity : AppCompatActivity() {
 
             )
 
-
-
             progressBar.visibility = View.VISIBLE
             progressBar.isIndeterminate = true
             mUploadTask = fileReference.putFile(mImageUri!!)
@@ -100,7 +97,10 @@ class UploadActivity : AppCompatActivity() {
                     val upload = Product(
                         name = nameEditText!!.text.toString().trim { it <= ' ' },
                         imageUrl = newFileName,
-                        description =  descriptionEditText!!.text.toString().trim { it <= ' ' }
+                        description =  descriptionEditText!!.text.toString().trim { it <= ' ' },
+                        price = priceEditText!!.text.toString().trim { it <= ' ' }.toDouble(),
+                        category = categoryEditText!!.text.toString().trim { it <= ' ' },
+                        quantity = Integer.parseInt(quantityEditText!!.text.toString().trim { it <= ' ' }),
                     )
                     val uploadId = mDatabaseRef!!.push().key
                     mDatabaseRef!!.child((uploadId)!!).setValue(upload)

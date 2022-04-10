@@ -16,9 +16,15 @@ class DetailsActivity : AppCompatActivity() {
         var nameT = intss.getStringExtra("NAMET")
         var desT = intss.getStringExtra("DESCRIT")
         var imgT = intss.getStringExtra("IMGURI")
+        var priceT = intss.getStringExtra("PRICET")
+        var catT = intss.getStringExtra("CATT")
+        var quanT = intss.getStringExtra("QUANT")
 
         nameDetailTextView.text = nameT
         descriptionDetailTextView.text = desT
+        priceTextView.text = priceT
+        catTextView.text = catT
+        quanTextView.text = quanT
         ProductDetailImageView.loadImage(imgT)
 
 
