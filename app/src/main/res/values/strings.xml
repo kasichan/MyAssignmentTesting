@@ -8,4 +8,16 @@
     <string name="app_name2">NavigationDrawer</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="deactivate_confirmation"></string>
+
+    <string-array name="category">
+        <item>Electronis</item>
+        <item>Furniture</item>
+        <item>Toys</item>
+        <item>Decorations</item>
+        <item>Stationary</item>
+        <item>Cloths</item>
+        <item>Accessories</item>
+    </string-array>
+
 </resources>
