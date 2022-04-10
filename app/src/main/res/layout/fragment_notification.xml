@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DC61D6"
-    tools:context=".SettingsFragment">
+    android:background="@color/purple_200"
+    tools:context=".NotificationFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Settings"
+        android:text="Notification"
         android:textColor="@color/black"
         android:textSize="60dp"
         android:textStyle="bold" />
