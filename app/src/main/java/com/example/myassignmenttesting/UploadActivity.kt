@@ -17,7 +17,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.example.myassignmenttesting.MainActivity
 import com.example.myassignmenttesting.R
-import com.example.myassignmenttesting.model.Teacher
+import com.example.myassignmenttesting.model.Product
 import kotlinx.android.synthetic.main.activity_upload.*
 
 class UploadActivity : AppCompatActivity() {
@@ -33,8 +33,8 @@ class UploadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_upload)
         /**set data*/
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("teachers_uploads")
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("teachers_uploads")
+        mStorageRef = FirebaseStorage.getInstance().getReference("Product_images")
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Product_images")
 
         button_choose_image.setOnClickListener { openFileChoose() }
         upLoadBtn.setOnClickListener {
@@ -73,10 +73,14 @@ class UploadActivity : AppCompatActivity() {
 
     private fun uploadFile() {
         if (mImageUri != null) {
+            val newFileName =System.currentTimeMillis().toString()
             val fileReference = mStorageRef!!.child(
-                System.currentTimeMillis()
-                    .toString() + "." + getFileExtension(mImageUri!!)
+                newFileName + "." + getFileExtension(mImageUri!!)
+
             )
+
+
+
             progressBar.visibility = View.VISIBLE
             progressBar.isIndeterminate = true
             mUploadTask = fileReference.putFile(mImageUri!!)
@@ -89,13 +93,13 @@ class UploadActivity : AppCompatActivity() {
                     }, 500)
                     Toast.makeText(
                         this@UploadActivity,
-                        "Teacher data Upload successful",
+                        "Product data Upload successful",
                         Toast.LENGTH_LONG
                     )
                         .show()
-                    val upload = Teacher(
+                    val upload = Product(
                         name = nameEditText!!.text.toString().trim { it <= ' ' },
-                        imageUrl = mImageUri.toString(),
+                        imageUrl = newFileName,
                         description =  descriptionEditText!!.text.toString().trim { it <= ' ' }
                     )
                     val uploadId = mDatabaseRef!!.push().key
@@ -120,7 +124,7 @@ class UploadActivity : AppCompatActivity() {
     }
 
     private fun  openImagesActivity() {
-        startActivity(Intent(this@UploadActivity, MainActivity::class.java))
+        startActivity(Intent(this@UploadActivity, UploadActivity::class.java))
     }
 
 }

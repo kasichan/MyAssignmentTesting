@@ -9,7 +9,7 @@
     tools:context=".ItemsActivity">
     <TextView
         android:id="@+id/textView"
-        android:text="Teachers List"
+        android:text="Products List"
         android:textAlignment="center"
         android:layout_marginTop="10dp"
         android:textSize="19sp"
