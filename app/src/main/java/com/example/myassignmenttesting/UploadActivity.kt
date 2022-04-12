@@ -1,6 +1,5 @@
 package com.example.myassignmenttesting
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -125,8 +124,7 @@ class UploadActivity : AppCompatActivity() {
                         category = category.selectedItem.toString(),
                         quantity = Integer.parseInt(quantityEditText!!.text.toString().trim { it <= ' ' }),
                     )
-                    val uploadId = mDatabaseRef!!.push().key
-                    mDatabaseRef!!.child((uploadId)!!).setValue(upload)
+                    mDatabaseRef!!.child("$newFileName").setValue(upload)
                     progressBar.visibility = View.INVISIBLE
                     openImagesActivity()
                 }

@@ -9,12 +9,11 @@ import android.widget.Toast
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
-
+import kotlinx.android.synthetic.main.activity_details.*
 
 
 class DetailsActivity : AppCompatActivity() {
 
-    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,40 +45,19 @@ class DetailsActivity : AppCompatActivity() {
 
 
             }
+        editProduct_btn.setOnClickListener {
 
+            val mIntent = Intent(this, edit_product::class.java)
 
-        delete_btn.setOnClickListener {
-            database = FirebaseDatabase.getInstance().getReference("Product_images")
-//            database.child("$imageNameT").removeValue()
+            mIntent.putExtra("NAMET", nameT)
+            mIntent.putExtra("DESCRIT", desT)
+            mIntent.putExtra("IMGURI", imgT)
+            mIntent.putExtra("PRICET", priceT)
+            mIntent.putExtra("CATT", catT)
+            mIntent.putExtra("QUANT", quanT)
+            mIntent.putExtra("IMGNAMET", imageNameT)
+            startActivity(mIntent)
 
-
-            database
-                .orderByChild("imageUrl")
-                .equalTo("$imageNameT")
-                .addListenerForSingleValueEvent(object: ValueEventListener {
-
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                        dataSnapshot.children.forEach {
-                            //"it" is the snapshot
-                            val key: String = it.key.toString()
-                            database.removeValue()
-
-                        }
-                    }
-
-                    override fun onCancelled(p0: DatabaseError) {
-                        //do whatever you need
-                    }
-                })
-
-//                .addOnSuccessListener {
-//                    startActivity(Intent(this,ItemsActivity::class.java))
-//                    Toast.makeText(this,"Successful remove product",Toast.LENGTH_SHORT).show()
-//            }
-//                .addOnFailureListener {
-//                    Toast.makeText(this,"Fail to remove product",Toast.LENGTH_SHORT).show()
-//                }
         }
 
     }
