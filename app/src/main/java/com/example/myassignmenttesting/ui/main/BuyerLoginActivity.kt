@@ -10,12 +10,9 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import com.example.myassignmenttesting.*
 
-import com.example.myassignmenttesting.MainActivity
-import com.example.myassignmenttesting.buyer_profile_activity
 import com.example.myassignmenttesting.databinding.BuyerUserLoginBinding
-import com.example.myassignmenttesting.navigation_drawer_activity
-import com.example.myassignmenttesting.register_activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -147,7 +144,7 @@ class BuyerLoginActivity() : AppCompatActivity() {
     private fun verifyUser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
-            startActivity(Intent(this, navigation_drawer_activity::class.java))
+            startActivity(Intent(this, upload::class.java))
             finish()
         }
     }

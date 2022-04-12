@@ -183,7 +183,20 @@
             android:exported="false"
             tools:ignore="Instantiatable">
         </activity>
-        
+
+        <activity
+            android:name=".createPayment"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
+
+        <activity
+            android:name=".buyProduct"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
+
+
 
 
 

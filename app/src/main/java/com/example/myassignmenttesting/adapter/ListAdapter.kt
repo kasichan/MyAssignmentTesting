@@ -69,6 +69,7 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
             val category = newList.category
             val quantity = newList.quantity.toString()
             val imageName = newList.imageUrl
+            val sellerEmail = newList.sellerEmail.toString()
             val mIntent = Intent(mContext, DetailsActivity::class.java)
 
                     mIntent.putExtra("NAMET",name)
@@ -78,6 +79,8 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
                     mIntent.putExtra("CATT",category)
                     mIntent.putExtra("QUANT",quantity)
                     mIntent.putExtra("IMGNAMET",imageName)
+                    mIntent.putExtra("SELLEREMAILT",sellerEmail)
+
 
 
 
@@ -94,6 +97,7 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
                     val category = newList.category
                     val quantity = newList.quantity.toString()
                     val imageName = newList.imageUrl
+                    val sellerEmail = newList.sellerEmail.toString()
                     val mIntent = Intent(mContext, buyProduct::class.java)
 
                     mIntent.putExtra("NAMET",name)
@@ -103,6 +107,7 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
                     mIntent.putExtra("CATT",category)
                     mIntent.putExtra("QUANT",quantity)
                     mIntent.putExtra("IMGNAMET",imageName)
+                    mIntent.putExtra("SELLEREMAILT",sellerEmail)
 
 
 
