@@ -112,6 +112,8 @@ class createPayment : AppCompatActivity() {
 
             db.collection("Order").document("$newOrderCode").set(order)
 
+
+
         }
 
 

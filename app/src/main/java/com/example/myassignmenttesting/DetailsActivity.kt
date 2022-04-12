@@ -28,6 +28,7 @@ class DetailsActivity : AppCompatActivity() {
         var catT = intss.getStringExtra("CATT")
         var quanT = intss.getStringExtra("QUANT")
         var imageNameT = intss.getStringExtra("IMGNAMET")
+        var sellerEmail = intss.getStringExtra("SELLEREMAIL")
 
         val storageRef = FirebaseStorage.getInstance().reference.child("Product_images/$imgT")
         val localfile = File.createTempFile("tempImage", "jpeg")
@@ -47,7 +48,7 @@ class DetailsActivity : AppCompatActivity() {
             }
         editProduct_btn.setOnClickListener {
 
-            val mIntent = Intent(this, edit_product::class.java)
+            val mIntent = Intent(this, new_edit_product::class.java)
 
             mIntent.putExtra("NAMET", nameT)
             mIntent.putExtra("DESCRIT", desT)
@@ -56,6 +57,7 @@ class DetailsActivity : AppCompatActivity() {
             mIntent.putExtra("CATT", catT)
             mIntent.putExtra("QUANT", quanT)
             mIntent.putExtra("IMGNAMET", imageNameT)
+            mIntent.putExtra("SELLEREMAILT", sellerEmail)
             startActivity(mIntent)
 
         }

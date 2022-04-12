@@ -17,10 +17,9 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.row_item.view.*
 import java.io.File
 
-class ListAdapter(var mContext:Context, var productList: MutableList<Product>):
-RecyclerView.Adapter<ListAdapter.ListViewHolder>()
-{
-    inner class ListViewHolder(var v:View): RecyclerView.ViewHolder(v){
+class ListAdapter(var mContext: Context, var productList: MutableList<Product>) :
+    RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+    inner class ListViewHolder(var v: View) : RecyclerView.ViewHolder(v) {
         var imgT = v.findViewById<ImageView>(R.id.ProductImageView)
         var nameT = v.findViewById<TextView>(R.id.nameTextView)
         var descriT = v.findViewById<TextView>(R.id.descriptionTextView)
@@ -31,20 +30,19 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-       var infalter = LayoutInflater.from(parent.context)
-        var v = infalter.inflate(R.layout.row_item,parent,false)
+        var infalter = LayoutInflater.from(parent.context)
+        var v = infalter.inflate(R.layout.row_item, parent, false)
 
         return ListViewHolder(v)
 
 
-
     }
 
-    override fun getItemCount(): Int =productList.size
+    override fun getItemCount(): Int = productList.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-       var newList = productList[position]
-        var imageName = newList.imageUrl+".jpg"
+        var newList = productList[position]
+        var imageName = newList.imageUrl + ".jpg"
 
         holder.nameT.text = newList.name
         holder.descriT.text = newList.description
@@ -53,46 +51,47 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
         holder.quantityT.text = newList.quantity.toString()
 
         val storageRef = FirebaseStorage.getInstance().reference.child("Product_images/$imageName")
-        val localfile = File.createTempFile("tempImage","jpeg")
+        val localfile = File.createTempFile("tempImage", "jpeg")
         storageRef.getFile(localfile)
             .addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 holder.imgT.setImageBitmap(bitmap)
 
 
-        holder.v.setOnClickListener {
+                holder.v.setOnClickListener {
 
-            val name = newList.name
-            val descrip = newList.description
-            val imgUri = newList.imageUrl+".jpg"
-            val price = newList.price.toString()
-            val category = newList.category
-            val quantity = newList.quantity.toString()
-            val imageName = newList.imageUrl
-            val sellerEmail = newList.sellerEmail.toString()
-            val mIntent = Intent(mContext, DetailsActivity::class.java)
+                    val name = newList.name
+                    val descrip = newList.description
+                    val imgUri = newList.imageUrl + ".jpg"
+                    val price = newList.price.toString()
+                    val category = newList.category
+                    val quantity = newList.quantity.toString()
+                    val imageName = newList.imageUrl
+                    val sellerEmail = newList.sellerEmail.toString()
+                    val mIntent = Intent(mContext, DetailsActivity::class.java)
 
-                    mIntent.putExtra("NAMET",name)
-                    mIntent.putExtra("DESCRIT",descrip)
-                    mIntent.putExtra("IMGURI",imgUri)
-                    mIntent.putExtra("PRICET",price)
-                    mIntent.putExtra("CATT",category)
-                    mIntent.putExtra("QUANT",quantity)
-                    mIntent.putExtra("IMGNAMET",imageName)
-                    mIntent.putExtra("SELLEREMAILT",sellerEmail)
-
-
+                    mIntent.putExtra("NAMET", name)
+                    mIntent.putExtra("DESCRIT", descrip)
+                    mIntent.putExtra("IMGURI", imgUri)
+                    mIntent.putExtra("PRICET", price)
+                    mIntent.putExtra("CATT", category)
+                    mIntent.putExtra("QUANT", quantity)
+                    mIntent.putExtra("IMGNAMET", imageName)
+                    mIntent.putExtra("SELLEREMAILT", sellerEmail)
 
 
 
-            mContext.startActivity(mIntent)
-        }
+
+
+
+                    mContext.startActivity(mIntent)
+                }
 
                 holder.v.buy.setOnClickListener {
 
                     val name = newList.name
                     val descrip = newList.description
-                    val imgUri = newList.imageUrl+".jpg"
+                    val imgUri = newList.imageUrl + ".jpg"
                     val price = newList.price.toString()
                     val category = newList.category
                     val quantity = newList.quantity.toString()
@@ -100,22 +99,22 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
                     val sellerEmail = newList.sellerEmail.toString()
                     val mIntent = Intent(mContext, buyProduct::class.java)
 
-                    mIntent.putExtra("NAMET",name)
-                    mIntent.putExtra("DESCRIT",descrip)
-                    mIntent.putExtra("IMGURI",imgUri)
-                    mIntent.putExtra("PRICET",price)
-                    mIntent.putExtra("CATT",category)
-                    mIntent.putExtra("QUANT",quantity)
-                    mIntent.putExtra("IMGNAMET",imageName)
-                    mIntent.putExtra("SELLEREMAILT",sellerEmail)
+                    mIntent.putExtra("NAMET", name)
+                    mIntent.putExtra("DESCRIT", descrip)
+                    mIntent.putExtra("IMGURI", imgUri)
+                    mIntent.putExtra("PRICET", price)
+                    mIntent.putExtra("CATT", category)
+                    mIntent.putExtra("QUANT", quantity)
+                    mIntent.putExtra("IMGNAMET", imageName)
+                    mIntent.putExtra("SELLEREMAILT", sellerEmail)
 
 
 
 
                     mContext.startActivity(mIntent)
                 }
+            }
+
+
     }
-
-
-}
 }
