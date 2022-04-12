@@ -11,7 +11,6 @@ data class Product(
     var category: String?=null,
     var quantity: Int?= null,
 
-
     @get:Exclude
     @set:Exclude
     var key:String? = null
