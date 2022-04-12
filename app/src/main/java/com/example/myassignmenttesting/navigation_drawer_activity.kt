@@ -32,12 +32,11 @@ class navigation_drawer_activity : AppCompatActivity() {
             it.isChecked = true
 
             when(it.itemId){
-
-                R.id.nav_home -> replaceFragment(HomeFragment(), it.title.toString())
+                R.id.nav_home -> replaceFragment(Home_Fragment(), it.title.toString())
                 R.id.nav_profile -> replaceFragment(ProfileFragment(), it.title.toString())
                 R.id.nav_notification -> replaceFragment(NotificationFragment(), it.title.toString())
                 R.id.nav_settings -> replaceFragment(SettingsFragment(), it.title.toString())
-                R.id.nav_chat -> replaceFragment(ChatFragment(), it.title.toString())
+                R.id.nav_chat -> replaceFragment(Chat_Fragment(), it.title.toString())
 
             }
             true
@@ -47,7 +46,7 @@ class navigation_drawer_activity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment, title : String) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.myNavHostFragment,fragment)
+        fragmentTransaction.replace(R.id.fragment,fragment)
         fragmentTransaction.commit()
         drawerLayout.closeDrawers()
         setTitle(title)
