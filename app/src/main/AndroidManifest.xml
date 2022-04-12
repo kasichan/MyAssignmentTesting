@@ -170,6 +170,11 @@
             android:exported="false"
             tools:ignore="Instantiatable">
         </activity>
+        <activity
+            android:name=".SearchFragment"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
 
 
         <activity
@@ -183,6 +188,21 @@
             android:exported="false"
             tools:ignore="Instantiatable">
         </activity>
+
+
+        <activity
+            android:name=".ChatRoomFragment"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
+
+        <activity
+            android:name=".buy_chat_layout_recycle_activity"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
+
+
         
 
 

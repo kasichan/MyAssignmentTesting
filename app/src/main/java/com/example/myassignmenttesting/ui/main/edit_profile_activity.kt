@@ -80,7 +80,7 @@ class edit_profile_activity : AppCompatActivity() {
 
         if(firebaseUser!=null) {
             val currentEmail = firebaseUser.email.toString()
-            val user = User(currentEmail, username,password,address,gender,age,status)
+            val user = User("",currentEmail, username,password,address,gender,age,status)
             db.collection("User").document("$currentEmail").set(user).addOnSuccessListener {
 
 

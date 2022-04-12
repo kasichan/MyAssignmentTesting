@@ -29,6 +29,15 @@ class seller_dashboard_activity : AppCompatActivity() {
 
         verifyUser()
 
+        binding.chat3.setOnClickListener {
+            startActivity(Intent(this,buy_chat_layout_recycle_activity::class.java))
+        }
+
+        binding.addProduct.setOnClickListener {
+            startActivity(Intent(this,UploadActivity::class.java))
+        }
+
+
     }
 
     private fun verifyUser(){

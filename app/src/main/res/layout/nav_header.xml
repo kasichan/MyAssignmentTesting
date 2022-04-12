@@ -22,14 +22,15 @@
         android:id="@+id/user_name"
         android:paddingTop="8dp"
         android:textSize="20dp"
-        android:text="ah boi"
+        android:text=""
         android:textColor="@color/black"/>
 
     <TextView
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="ahboi@gmail.com"/>
+        android:text=""/>
 
     <View
         android:layout_width="match_parent"

@@ -1,21 +1,22 @@
 package com.example.myassignmenttesting.ui.main
 
+import android.app.Notification
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
+import androidx.media.app.NotificationCompat
+import com.example.myassignmenttesting.*
 
-import com.example.myassignmenttesting.MainActivity
-import com.example.myassignmenttesting.buyer_profile_activity
 import com.example.myassignmenttesting.databinding.BuyerUserLoginBinding
-import com.example.myassignmenttesting.navigation_drawer_activity
-import com.example.myassignmenttesting.register_activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -151,6 +152,8 @@ class BuyerLoginActivity() : AppCompatActivity() {
             finish()
         }
     }
+
+
 }
 
 

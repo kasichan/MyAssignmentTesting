@@ -55,7 +55,7 @@ class change_password_activity : AppCompatActivity() {
                                 val gender = document.get("gender").toString()
                                 val age = Integer.parseInt(document.get("age").toString())
                                 val status = document.get("status").toString()
-                                val user = User(email, username,newPassword,address,gender,age,status)
+                                val user = User("",email, username,newPassword,address,gender,age,status)
                                 db.collection("User").document(email).set(user).addOnSuccessListener {
 
                                     firebaseUser!!.updatePassword(newPassword)

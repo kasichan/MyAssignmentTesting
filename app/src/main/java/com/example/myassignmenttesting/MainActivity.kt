@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                 val firebaseUser = firebaseAuth.currentUser
                 //val authEmail = firebaseUser!!.email
 
-                val user = User(email, username,password,address,gender,age,"xd")
+                val user = User("",email, username,password,address,gender,age,"activated")
                 db.collection("User").document("$email").set(user)
 
                 Toast.makeText(this, "Account has been created with email $email"  , Toast.LENGTH_SHORT).show()
