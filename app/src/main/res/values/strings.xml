@@ -10,6 +10,14 @@
     <string name="nav_close">Close</string>
     <string name="deactivate_confirmation"></string>
 
+    <string name="normal_option">Normal Map</string>
+    <string name="hybrid_option">Hybrid Map</string>
+    <string name="satellite_option">Satellite Map</string>
+    <string name="terrain_option">Terrain Map</string>
+    <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
+    <string name="dropped_pin">Dropped Pin</string>
+    <string name="poi">poi</string>
+
     <string-array name="category">
         <item>Electronis</item>
         <item>Furniture</item>
@@ -19,5 +27,6 @@
         <item>Cloths</item>
         <item>Accessories</item>
     </string-array>
+    <string name="title_activity_maps">Maps_Activity</string>
 
 </resources>

@@ -24,6 +24,7 @@ class buyProduct : AppCompatActivity() {
         var priceT = intss.getStringExtra("PRICET")
         var quanT = intss.getStringExtra("QUANT")
         var imageNameT = intss.getStringExtra("IMGNAMET")
+        var sellerEmail = intss.getStringExtra("SELLEREMAILT")
         var realPrice = priceT?.toDouble()
 
         val storageRef = FirebaseStorage.getInstance().reference.child("Product_images/$imgT")
@@ -79,14 +80,17 @@ class buyProduct : AppCompatActivity() {
         })
 
         buyProduct_btn.setOnClickListener {
-
-            val mIntent = Intent(this, edit_product::class.java)
+            val purchaseQuan = buyQuan.text.toString()
+            val purchaseTotalPrice = buyTotalPrice.text.toString()
+            val mIntent = Intent(this, createPayment::class.java)
 
             mIntent.putExtra("NAMET", nameT)
             mIntent.putExtra("DESCRIT", desT)
-            mIntent.putExtra("IMGURI", imgT)
             mIntent.putExtra("PRICET", priceT)
+            mIntent.putExtra("PURQUANT",purchaseQuan)
+            mIntent.putExtra("PURTOTALT",purchaseTotalPrice)
             mIntent.putExtra("IMGNAMET", imageNameT)
+            mIntent.putExtra("SELLEREMAILT", sellerEmail)
             startActivity(mIntent)
 
         }

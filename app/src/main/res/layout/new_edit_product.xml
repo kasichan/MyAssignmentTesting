@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".buyProduct">
+    tools:context=".new_edit_product">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="280dp">
                 <ImageView
-                    android:id="@+id/buyImage"
+                    android:id="@+id/editProductDetailImageView"
                     android:scaleType="fitXY"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -31,70 +31,76 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
+
+
+                <EditText
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:text="Product Name"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
-                    android:id="@+id/buyName"
+                    android:id="@+id/editnameDetailTextView"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-                <TextView
-                    android:textSize="20sp"
+                <EditText
+                    android:textSize="13sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:text="Product Total Price"
+                    android:textColor="@color/cardview_dark_background"
+                    android:text="Product Description Here....."
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
-                    android:id="@+id/buyDescription"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/editdescriptionDetailTextView"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-                <TextView
+                <EditText
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:text="Product Price"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
-                    android:id="@+id/buyPrice"
+                    android:id="@+id/editpriceTextView"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <EditText
-                    android:id="@+id/buyQuan"
+                <Spinner
+                    android:id="@+id/category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:inputType="number"
-                    android:text="1"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <TextView
+                    android:layout_marginEnd="15dp"/>
+                <EditText
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:text="Product Total Price"
+                    android:text="Quantity"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
-                    android:id="@+id/buyTotalPrice"
+                    android:id="@+id/editquanTextView"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
 
+
                 <Button
-                    android:id="@+id/buyProduct_btn"
+                    android:id="@+id/edit_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="CONFIRM" />
+                    android:text="Confirm Edit" />
+
+                <Button
+                    android:id="@+id/delete_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E3E3E3"
+                    android:backgroundTint="#FD0808"
+                    android:text="Delete"
+                    android:textColor="@color/design_default_color_error" />
 
 
             </LinearLayout>

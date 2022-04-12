@@ -33,7 +33,6 @@
                 android:layout_height="wrap_content">
 
 
-
                 <EditText
                     android:textSize="20sp"
                     android:textStyle="bold"
