@@ -14,7 +14,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.example.myassignmenttesting.databinding.EditProfileBinding
-import com.example.myassignmenttesting.databinding.EditProductBinding
 import com.example.myassignmenttesting.ui.main.BuyerLoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

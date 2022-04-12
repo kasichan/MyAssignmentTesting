@@ -8,8 +8,12 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import com.example.myassignmenttesting.model.Product
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.database.Query;
 import kotlinx.android.synthetic.main.activity_edit_product.*
 import kotlinx.android.synthetic.main.activity_edit_product.category
 import java.io.File
@@ -57,34 +61,34 @@ class edit_product : AppCompatActivity() {
 
 
 
-
-        val storageRef = FirebaseStorage.getInstance().reference.child("Product_images/$imgT")
-        val localfile = File.createTempFile("tempImage", "jpeg")
-        storageRef.getFile(localfile)
-            .addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                editProductDetailImageView.setImageBitmap(bitmap)
-                editnameDetailTextView.setText(nameT)
-                editdescriptionDetailTextView.setText(desT)
-                editpriceTextView.setText(priceT)
-                editcatTextView.setText(catT)
-                editquanTextView.setText(quanT)
-            }
-
-        delete_btn.setOnClickListener {
-            reference = FirebaseDatabase.getInstance().getReference("Product_images")
-            reference!!.child("$imageNameT").removeValue()
-                .addOnSuccessListener {
-                    Toast.makeText(this,"Successful remove product",Toast.LENGTH_SHORT).show()
-            }
-                .addOnFailureListener {
-                    Toast.makeText(this,"Fail to remove product",Toast.LENGTH_SHORT).show()
-                }
-        }
-
-        edit_btn.setOnClickListener {
-            editFile()
-        }
+//
+//        val storageRef = FirebaseStorage.getInstance().reference.child("Product_images/$imgT")
+//        val localfile = File.createTempFile("tempImage", "jpeg")
+//        storageRef.getFile(localfile)
+//            .addOnSuccessListener {
+//                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+//                editProductDetailImageView.setImageBitmap(bitmap)
+//                editnameDetailTextView.setText(nameT)
+//                editdescriptionDetailTextView.setText(desT)
+//                editpriceTextView.setText(priceT)
+//                editcatTextView.setText(catT)
+//                editquanTextView.setText(quanT)
+//            }
+//
+//        delete_btn.setOnClickListener {
+//            reference = FirebaseDatabase.getInstance().getReference("Product_images")
+//            reference!!.child("$imageNameT").removeValue()
+//                .addOnSuccessListener {
+//                    Toast.makeText(this,"Successful remove product",Toast.LENGTH_SHORT).show()
+//                }
+//                .addOnFailureListener {
+//                    Toast.makeText(this,"Fail to remove product",Toast.LENGTH_SHORT).show()
+//                }
+//        }
+//
+//        edit_btn.setOnClickListener {
+//            editFile()
+//        }
 
     }
 
@@ -130,7 +134,7 @@ class edit_product : AppCompatActivity() {
 
 
 
-        }
+    }
 
 
 
