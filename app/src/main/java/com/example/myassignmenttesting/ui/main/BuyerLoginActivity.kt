@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBar
 import com.example.myassignmenttesting.MainActivity
 import com.example.myassignmenttesting.buyer_profile_activity
 import com.example.myassignmenttesting.databinding.BuyerUserLoginBinding
+import com.example.myassignmenttesting.navigation_drawer_activity
 import com.example.myassignmenttesting.register_activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -40,9 +41,9 @@ class BuyerLoginActivity() : AppCompatActivity() {
 
 
         setContentView(binding.root)
-
-        actionBar = supportActionBar!!
-        actionBar.title = "Login"
+//
+//        actionBar = supportActionBar!!
+//        actionBar.title = "Login"
 
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait")
@@ -125,7 +126,7 @@ class BuyerLoginActivity() : AppCompatActivity() {
                                 }
                                 var i = Intent(this, buyer_profile_activity::class.java)
                                 i.putExtra("username", username)
-                                startActivity(Intent(this, buyer_profile_activity::class.java))
+                                startActivity(Intent(this, navigation_drawer_activity::class.java))
                                 finish()
                             }
 
@@ -146,7 +147,7 @@ class BuyerLoginActivity() : AppCompatActivity() {
     private fun verifyUser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
-            startActivity(Intent(this, buyer_profile_activity::class.java))
+            startActivity(Intent(this, navigation_drawer_activity::class.java))
             finish()
         }
     }

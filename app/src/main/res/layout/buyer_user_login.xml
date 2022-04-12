@@ -7,12 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.main.BuyerLoginActivity">
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="810px"
-        android:text="Sign Up" />
+
 
     <ImageView
         android:id="@+id/imageView3"
@@ -46,6 +41,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="150px"
         android:text="Login" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:text="Sign Up" />
 
 
 </LinearLayout>

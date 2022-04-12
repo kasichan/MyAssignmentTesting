@@ -12,8 +12,13 @@
         android:theme="@style/Theme.MyAssignmentTesting">
         <activity
             android:name=".ui.main.SplashScreenActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/SplashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -132,11 +137,7 @@
         <activity
             android:name=".navigation_drawer_activity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -166,6 +167,13 @@
 
         <activity
             android:name=".Chat_Fragment"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
+
+
+        <activity
+            android:name=".EditProfileFragment"
             android:exported="false"
             tools:ignore="Instantiatable">
         </activity>
