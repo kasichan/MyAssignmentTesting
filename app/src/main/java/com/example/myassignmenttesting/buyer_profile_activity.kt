@@ -3,6 +3,7 @@ package com.example.myassignmenttesting
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.example.myassignmenttesting.databinding.BuyerProfileBinding
@@ -50,6 +51,11 @@ class buyer_profile_activity : AppCompatActivity() {
             startActivity(Intent(this,seller_dashboard_activity::class.java))
             finish()
         }
+
+        val connMap = findViewById<Button>(R.id.button4)
+        connMap.setOnClickListener{
+            val Intent = Intent(this, Maps_Activity::class.java)
+            startActivity(Intent)         }
     }
 
     private fun verifyUser(){

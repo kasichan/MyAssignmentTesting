@@ -11,6 +11,7 @@ import android.webkit.MimeTypeMap
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -57,7 +58,42 @@ class UploadActivity : AppCompatActivity() {
                     "An Upload is Still in Progress",
                     Toast.LENGTH_SHORT).show()
             }
-
+            if(nameEditText.text.toString().isEmpty()){
+                nameEditText.error="Product Name must be included"
+            }
+            else if(nameEditText.text.length > 50){
+                nameEditText.error="Product Name length cannot more than 50 words"
+            }
+            else if(nameEditText.text.length <3){
+                nameEditText.error="Product Name length must at least 3 words"
+            }
+            else if(nameEditText.text.isDigitsOnly()){
+                nameEditText.error="Product Name must include words"
+            }
+            else if(descriptionEditText.text.isEmpty()){
+                descriptionEditText.error="Product description must be included"
+            }
+            else if (descriptionEditText.text.length < 50){
+                descriptionEditText.error="Product description must have at least 50 words"
+            }
+            else if (descriptionEditText.text.length > 300){
+                descriptionEditText.error="Product description cannot be more than 300 words"
+            }
+            else if(descriptionEditText.text.isDigitsOnly()){
+                descriptionEditText.error="Product description must include words"
+            }
+            else if(priceEditText.text.isEmpty()){
+                priceEditText.error="Product Price must be included"
+            }
+            else if (quantityEditText.text.isEmpty()){
+                    quantityEditText.error ="Product Quantity must be included"
+            }
+            else if (!quantityEditText.text.isDigitsOnly()){
+                quantityEditText.error ="Product Quantity can only include digits number"
+            }
+//            else if(category.selectedItem.toString().trim().isEmpty()){
+//                Toast.makeText((this,"Please select a category for product", Toast.LENGTH_SHORT).show())
+//            }
             else{
                 uploadFile()
             }
