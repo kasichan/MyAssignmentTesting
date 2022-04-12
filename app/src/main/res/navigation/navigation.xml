@@ -12,10 +12,46 @@
         <action
             android:id="@+id/action_home_Fragment_to_chat_Fragment"
             app:destination="@id/chat_Fragment" />
+        <action
+            android:id="@+id/action_home_Fragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_home_Fragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_home_Fragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/chat_Fragment"
         android:name="com.example.myassignmenttesting.Chat_Fragment"
         android:label="fragment_chat_"
         tools:layout="@layout/fragment_chat_" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.myassignmenttesting.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_home_Fragment3"
+            app:destination="@id/home_Fragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editProfileFragment2"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.myassignmenttesting.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.example.myassignmenttesting.ContactUsFragment"
+        android:label="fragment_contact_us"
+        tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.myassignmenttesting.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>

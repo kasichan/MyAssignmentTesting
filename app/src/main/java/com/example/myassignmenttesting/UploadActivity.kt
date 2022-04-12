@@ -18,6 +18,10 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.example.myassignmenttesting.model.Product
+import com.example.myassignmenttesting.ui.main.BuyerLoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_create_payment.*
 import kotlinx.android.synthetic.main.activity_upload.*
 
 class UploadActivity : AppCompatActivity() {
@@ -28,8 +32,13 @@ class UploadActivity : AppCompatActivity() {
     private var mUploadTask: StorageTask<*>? = null
     private val PICK_IMAGE_REQUEST = 1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var firebaseAuth : FirebaseAuth
+    private lateinit var db : FirebaseFirestore
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        firebaseAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload)
@@ -131,6 +140,20 @@ class UploadActivity : AppCompatActivity() {
 
             )
 
+            val firebaseUser = firebaseAuth.currentUser
+            var sellerEmail = ""
+            if(firebaseUser!=null) {
+                sellerEmail = firebaseUser.email.toString()
+
+
+            }
+            else
+            {
+
+                startActivity(Intent(this, BuyerLoginActivity::class.java))
+                finish()
+            }
+
             progressBar.visibility = View.VISIBLE
             progressBar.isIndeterminate = true
             mUploadTask = fileReference.putFile(mImageUri!!)
@@ -148,9 +171,7 @@ class UploadActivity : AppCompatActivity() {
                     )
                         .show()
 
-                    if(nameEditText!=null){
 
-                    }
 
                     val upload = Product(
                         name = nameEditText!!.text.toString().trim { it <= ' ' },
@@ -159,6 +180,7 @@ class UploadActivity : AppCompatActivity() {
                         price = priceEditText!!.text.toString().trim { it <= ' ' }.toDouble(),
                         category = category.selectedItem.toString(),
                         quantity = Integer.parseInt(quantityEditText!!.text.toString().trim { it <= ' ' }),
+                        sellerEmail = sellerEmail
                     )
                     mDatabaseRef!!.child("$newFileName").setValue(upload)
                     progressBar.visibility = View.INVISIBLE

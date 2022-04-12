@@ -42,10 +42,7 @@ class buyer_profile_activity : AppCompatActivity() {
             finish()
         }
 
-        binding.logoutButton.setOnClickListener {
-            firebaseAuth.signOut()
-            verifyUser()
-        }
+
 
         binding.sellerCenter.setOnClickListener {
             startActivity(Intent(this,seller_dashboard_activity::class.java))

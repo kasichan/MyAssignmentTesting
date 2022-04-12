@@ -12,6 +12,7 @@ import com.example.myassignmenttesting.model.Product
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_items.*
+import kotlinx.android.synthetic.main.row_item.*
 
 
 class ItemsActivity : AppCompatActivity() {
@@ -48,7 +49,7 @@ class ItemsActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 mProducts.clear()
                 for (ProductSnapshot in snapshot.children){
-                    val upload = ProductSnapshot.getValue(Product::class.java)
+                    val upload = ProductSnapshot.getValue(Product ::class.java)
                     upload!!.key = ProductSnapshot.key
                     mProducts.add(upload)
 
@@ -59,6 +60,7 @@ class ItemsActivity : AppCompatActivity() {
             }
 
         })
+
     }
 
     override fun onDestroy() {

@@ -125,16 +125,6 @@
         android:paddingTop="200dp"
         android:text="Content Wallet / Favorite / Review" />
 
-    <Button
-        android:id="@+id/logoutButton"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="141dp"
-        android:layout_height="79dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:background="#FF0000"
-        android:text="Logout"
-        android:textColor="#000000" />
+
 
 </LinearLayout>

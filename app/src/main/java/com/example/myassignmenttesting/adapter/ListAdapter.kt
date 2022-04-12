@@ -11,8 +11,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassignmenttesting.R
 import com.example.myassignmenttesting.DetailsActivity
+import com.example.myassignmenttesting.buyProduct
 import com.example.myassignmenttesting.model.Product
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.row_item.view.*
 import java.io.File
 
 class ListAdapter(var mContext:Context, var productList: MutableList<Product>):
@@ -31,7 +33,11 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
        var infalter = LayoutInflater.from(parent.context)
         var v = infalter.inflate(R.layout.row_item,parent,false)
+
         return ListViewHolder(v)
+
+
+
     }
 
     override fun getItemCount(): Int =productList.size
@@ -63,6 +69,7 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
             val category = newList.category
             val quantity = newList.quantity.toString()
             val imageName = newList.imageUrl
+            val sellerEmail = newList.sellerEmail.toString()
             val mIntent = Intent(mContext, DetailsActivity::class.java)
 
                     mIntent.putExtra("NAMET",name)
@@ -72,12 +79,43 @@ RecyclerView.Adapter<ListAdapter.ListViewHolder>()
                     mIntent.putExtra("CATT",category)
                     mIntent.putExtra("QUANT",quantity)
                     mIntent.putExtra("IMGNAMET",imageName)
+                    mIntent.putExtra("SELLEREMAILT",sellerEmail)
+
 
 
 
 
             mContext.startActivity(mIntent)
         }
+
+                holder.v.buy.setOnClickListener {
+
+                    val name = newList.name
+                    val descrip = newList.description
+                    val imgUri = newList.imageUrl+".jpg"
+                    val price = newList.price.toString()
+                    val category = newList.category
+                    val quantity = newList.quantity.toString()
+                    val imageName = newList.imageUrl
+                    val sellerEmail = newList.sellerEmail.toString()
+                    val mIntent = Intent(mContext, buyProduct::class.java)
+
+                    mIntent.putExtra("NAMET",name)
+                    mIntent.putExtra("DESCRIT",descrip)
+                    mIntent.putExtra("IMGURI",imgUri)
+                    mIntent.putExtra("PRICET",price)
+                    mIntent.putExtra("CATT",category)
+                    mIntent.putExtra("QUANT",quantity)
+                    mIntent.putExtra("IMGNAMET",imageName)
+                    mIntent.putExtra("SELLEREMAILT",sellerEmail)
+
+
+
+
+                    mContext.startActivity(mIntent)
+                }
     }
+
+
 }
 }

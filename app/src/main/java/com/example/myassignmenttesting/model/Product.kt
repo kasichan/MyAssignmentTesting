@@ -10,6 +10,7 @@ data class Product(
     var price:Double?=0.0,
     var category: String?=null,
     var quantity: Int?= null,
+    var sellerEmail: String?=null,
 
     @get:Exclude
     @set:Exclude

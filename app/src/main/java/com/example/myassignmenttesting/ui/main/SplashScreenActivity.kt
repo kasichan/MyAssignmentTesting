@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.myassignmenttesting.Home_Fragment
 import com.example.myassignmenttesting.MainActivity
 import com.example.myassignmenttesting.R
+import com.example.myassignmenttesting.navigation_drawer_activity
 
 
 class SplashScreenActivity : AppCompatActivity() {
