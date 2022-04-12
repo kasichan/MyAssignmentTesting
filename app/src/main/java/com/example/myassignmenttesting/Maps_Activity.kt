@@ -25,8 +25,9 @@ class Maps_Activity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var firebaseAuth : FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
-    var ltt= 5.453823591165468
-    var lgt= 100.28299366366896
+    var ltt= 5.175834023944499
+    var lgt= 100.49222664709654
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,10 +116,20 @@ class Maps_Activity : AppCompatActivity(), OnMapReadyCallback {
                 val addList = geocode.getFromLocationName(document.get("address").toString(), 2)
                 ltt = addList[0].latitude.toDouble()
                 lgt = addList[0].longitude.toDouble()
-                var hi = ltt
+                Toast.makeText(
+                    this@Maps_Activity,
+                    lgt.toString(),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
-            }
+            }.addOnFailureListener {
+            Toast.makeText(
+                this,
+                "OI",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
         }
 
 
