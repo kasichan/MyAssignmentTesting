@@ -17,20 +17,26 @@ import com.example.myassignmenttesting.databinding.ActivityMapsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
+import kotlin.collections.ArrayList
 
 class Maps_Activity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    private lateinit var firebaseAuth : FirebaseAuth
+
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
-    var ltt= 5.175834023944499
-    var lgt= 100.49222664709654
+    private var locationArrayList: ArrayList<LatLng>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val intss = intent
+        var senderEmailLoc = intss.getStringExtra("senderEmail")
+        var senderLocation = intss.getStringExtra("senderAddress")
+
 
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -42,6 +48,36 @@ class Maps_Activity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        locationArrayList = ArrayList()
+
+
+        var ltt: Double = 0.00000000
+        var lgt: Double = 0.00000000
+        var testint = LatLng(ltt, lgt)
+        val zooming = 15f
+
+        val geocode = Geocoder(this, Locale.getDefault())
+
+        val addList = geocode.getFromLocationName(senderLocation, 1)
+        ltt = addList[0].latitude.toDouble()
+        lgt = addList[0].longitude.toDouble()
+
+
+        val userEmail = senderEmailLoc
+
+        db.collection("User").whereEqualTo("email", senderEmailLoc).get().addOnSuccessListener {
+            for (document in it) {
+                Toast.makeText(this, senderEmailLoc, Toast.LENGTH_SHORT).show()
+                var secandLongLa1 =
+                    LatLng(document.get("lang") as Double, document.get("long") as Double)
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(secandLongLa1, zooming))
+                map.addMarker(MarkerOptions().position(secandLongLa1))
+
+            }
+
+
+        }
     }
 
     /**
@@ -54,23 +90,10 @@ class Maps_Activity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
+
         map = googleMap
-        retrieveAddress()
-        val latitude1 = ltt
-        val longitude1 = lgt
-        val secandLongLa1 = LatLng(latitude1, longitude1)
-        val zooming = 20f
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(secandLongLa1, zooming))
-        map.addMarker(MarkerOptions().position(secandLongLa1))
 
-//        val latitude2 = 5.453823591165468
-//        val longitude2 = 100.28299366366896
-//        val secandLongLa2 = LatLng(latitude2, longitude2)
-//        val zooming2 = 20f
-//
-//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(secandLongLa2, zooming2))
-//        map.addMarker(MarkerOptions().position(secandLongLa2))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -78,6 +101,7 @@ class Maps_Activity : AppCompatActivity(), OnMapReadyCallback {
         inflater.inflate(R.menu.map_options, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         // Change the map type based on the user's selection.
         R.id.normal_map_option -> {
@@ -99,42 +123,5 @@ class Maps_Activity : AppCompatActivity(), OnMapReadyCallback {
         else -> super.onOptionsItemSelected(item)
     }
 
-    private fun retrieveAddress(){
 
-        val firebaseUser = firebaseAuth.currentUser
-        var receiverAddress: String? = null
-
-        if(firebaseUser!=null) {
-            val userEmail = firebaseUser.email.toString()
-
-            val geocode = Geocoder(this, Locale.getDefault())
-
-        db.collection("User").whereEqualTo("email", userEmail).get().addOnSuccessListener {
-            for (document in it) {
-
-
-                val addList = geocode.getFromLocationName(document.get("address").toString(), 2)
-                ltt = addList[0].latitude.toDouble()
-                lgt = addList[0].longitude.toDouble()
-                Toast.makeText(
-                    this@Maps_Activity,
-                    lgt.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            }.addOnFailureListener {
-            Toast.makeText(
-                this,
-                "OI",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-        }
-
-
-
-
-
-    }
 }

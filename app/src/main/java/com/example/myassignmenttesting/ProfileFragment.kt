@@ -52,6 +52,8 @@ class ProfileFragment : Fragment() {
 
         db = FirebaseFirestore.getInstance()
 
+        verifyUser()
+
         val v: View = inflater.inflate(R.layout.navigation_drawer, container, false)
         drawerLayout = v.drawerLayout
         val navView : NavigationView = v.nav_view
@@ -79,6 +81,14 @@ class ProfileFragment : Fragment() {
             val intent = Intent(activity, buy_chat_layout_recycle_activity::class.java)
             startActivity(intent)
         }
+
+
+        binding.myPur.setOnClickListener {
+            val intent = Intent(activity, myPurchase::class.java)
+            startActivity(intent)
+        }
+
+
 
         return binding
     }

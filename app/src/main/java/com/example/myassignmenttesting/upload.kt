@@ -13,7 +13,7 @@ class upload : AppCompatActivity() {
         setContentView(R.layout.activity_main_upload)
 
         btnViewAll.setOnClickListener {
-            startActivity(Intent(this,ItemsActivity::class.java))
+            startActivity(Intent(this,myProduct::class.java))
         }
         btnAddInfo.setOnClickListener {
             startActivity(Intent(this, UploadActivity::class.java))

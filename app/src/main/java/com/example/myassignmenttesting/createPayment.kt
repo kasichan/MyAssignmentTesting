@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import com.example.myassignmenttesting.model.Product
 import com.example.myassignmenttesting.ui.main.BuyerLoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -42,6 +43,12 @@ class createPayment : AppCompatActivity() {
         var buyerEmail = ""
         var buyerAddress = ""
         var senderAddress1 =""
+
+        Toast.makeText(
+            this,
+            sellerEmail ,
+            Toast.LENGTH_SHORT
+        ).show()
 
         priceTextView.setText("RM "+purtotalT)
         onlinebanking.isChecked = true
@@ -110,7 +117,9 @@ class createPayment : AppCompatActivity() {
 
             val newOrderCode = "SEC"+System.currentTimeMillis().toString()
 
-            db.collection("Order").document("$newOrderCode").set(order)
+            db.collection("Order").document("$newOrderCode").set(order).addOnSuccessListener {
+                startActivity(Intent(this,navigation_drawer_activity::class.java))
+            }
 
 
 
