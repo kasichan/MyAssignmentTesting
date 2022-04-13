@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.example.myassignmenttesting.databinding.EditProfileBinding
 import com.example.myassignmenttesting.databinding.FragmentEditProfileBinding
@@ -41,6 +42,8 @@ class EditProfileFragment : Fragment() {
     var age: Int = 0
     var status = ""
 
+    private lateinit var actionBar: ActionBar
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +52,12 @@ class EditProfileFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val binding = inflater.inflate(R.layout.fragment_edit_profile, container, false)
+
+        actionBar = (activity as AppCompatActivity?)!!.supportActionBar!!
+        actionBar.title = "Edit Profile"
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
+
 
         firebaseAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -81,7 +90,7 @@ class EditProfileFragment : Fragment() {
 
         if(firebaseUser!=null) {
             val currentEmail = firebaseUser.email.toString()
-            val user = User(currentEmail, username,password,address,gender,age,status)
+            val user = User("",currentEmail, username,password,address,gender,age,status)
             db.collection("User").document("$currentEmail").set(user).addOnSuccessListener {
 
 
@@ -183,7 +192,6 @@ class EditProfileFragment : Fragment() {
                     }
 
                  editAge.setText(document.get("age").toString())
-                    //binding.editEmail.setText(document.get("email").toString())
                 editAddress.setText(document.get("address").toString())
                     editPassword.setText(document.get("password").toString())
 

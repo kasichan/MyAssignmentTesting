@@ -1,16 +1,23 @@
 package com.example.myassignmenttesting
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Message
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import android.content.Intent
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.fragment_chat_room.view.*
 
-class buyer_chatroom_activity : AppCompatActivity() {
+
+class ChatRoomFragment : Fragment() {
 
     private lateinit var chatRecyclerView: RecyclerView
     private lateinit var messageBox: EditText
@@ -18,14 +25,17 @@ class buyer_chatroom_activity : AppCompatActivity() {
     private lateinit var messageAdapter: MessageAdapter
     private lateinit var messageList: ArrayList<com.example.myassignmenttesting.model.Message>
     private lateinit var mDbRef: DatabaseReference
+    private lateinit var actionBar: ActionBar
 
     var receiverRoom: String? = null
     var senderRoom: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.buyer_chatroom)
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val intent = Intent(activity, UserAdapter::class.java)
+        val binding = inflater.inflate(R.layout.fragment_chat_room, container, false)
         val username = intent.getStringExtra("username")
         val receiverUid = intent.getStringExtra("uid")
 
@@ -35,26 +45,32 @@ class buyer_chatroom_activity : AppCompatActivity() {
         senderRoom = receiverUid + senderUid
         receiverRoom = senderUid + receiverUid
 
-        supportActionBar?.title = username  // !! PROBABLY NEED TO EDIT !!
 
-        chatRecyclerView = findViewById(R.id.chatRecyclerView)
-        messageBox = findViewById(R.id.messageBox)
-        sendButton = findViewById(R.id.sendButton)
+        actionBar = (activity as AppCompatActivity?)!!.supportActionBar!!
+        actionBar.title = username
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
+
+        chatRecyclerView = binding.chatRecyclerView
+
+        messageBox = binding.messageBox
+        sendButton = binding.sendButton
         messageList = ArrayList()
-        messageAdapter = MessageAdapter(this, messageList)
+        messageAdapter = MessageAdapter(requireContext(), messageList)
 
-        chatRecyclerView.layoutManager = LinearLayoutManager(this)
+        chatRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         chatRecyclerView.adapter = messageAdapter
 
         mDbRef.child("chats").child(senderRoom!!).child("messages")
-            .addValueEventListener(object: ValueEventListener {
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
                     messageList.clear()
 
-                    for(postSnapshot in snapshot.children) {
+                    for (postSnapshot in snapshot.children) {
 
-                        val message = postSnapshot.getValue(com.example.myassignmenttesting.model.Message::class.java)
+                        val message =
+                            postSnapshot.getValue(com.example.myassignmenttesting.model.Message::class.java)
                         messageList.add(message!!)
 
                     }
@@ -71,7 +87,7 @@ class buyer_chatroom_activity : AppCompatActivity() {
         sendButton.setOnClickListener {
 
             val message = messageBox.text.toString()
-            val messageObject = com.example.myassignmenttesting.model.Message(message,senderUid)
+            val messageObject = com.example.myassignmenttesting.model.Message(message, senderUid)
 
             mDbRef.child("chats").child(senderRoom!!).child("messages").push()
                 .setValue(messageObject).addOnSuccessListener {
@@ -80,5 +96,8 @@ class buyer_chatroom_activity : AppCompatActivity() {
                 }
             messageBox.setText("")
         }
+        return binding
     }
 }
+
+

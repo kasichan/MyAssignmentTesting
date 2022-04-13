@@ -44,6 +44,7 @@ class confirmation_fragment : DialogFragment() {
 
                         val status = document.get("status").toString()
                         val user = User(
+                            "",
                             email,
                             document.get("username").toString(),
                             document.get("password").toString(),

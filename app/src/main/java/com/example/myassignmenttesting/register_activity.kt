@@ -2,7 +2,6 @@ package com.example.myassignmenttesting
 
 import android.app.ProgressDialog
 import android.content.Intent
-import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -12,10 +11,10 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.example.myassignmenttesting.databinding.ActivityMainBinding
 import com.example.myassignmenttesting.ui.main.BuyerLoginActivity
-import com.example.myassignmenttesting.ui.main.SplashScreenActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
 
 
 class register_activity : AppCompatActivity() {
@@ -25,14 +24,14 @@ class register_activity : AppCompatActivity() {
     private lateinit var actionBar: ActionBar
     private lateinit var progressDialog: ProgressDialog
     private lateinit var firebaseAuth : FirebaseAuth
+    private lateinit var mDbRef : DatabaseReference
+
     var email = ""
     var username = ""
     var password = ""
     var address = ""
-    var gender = ""
     var age : Int = 0
-    var long : Double = 0.00000
-    var lang : Double = 0.00000
+    var gender = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -149,13 +148,12 @@ class register_activity : AppCompatActivity() {
                 val firebaseUser = firebaseAuth.currentUser
                 //val authEmail = firebaseUser!!.email
                 val status = "activated"
-                val geocode = Geocoder(this, Locale.getDefault())
-                if (address.isNotEmpty()){
-                    val addList = geocode.getFromLocationName(address,1)
-                    lang = addList[0].latitude
-                    long = addList[0].longitude
-                }
-                val user = UserMap(email, username,password,address,gender,age,status,long,lang)
+                val user = User("",email, username,password,address,gender,age,status)
+                addUserToDatabase(username, email, firebaseAuth.currentUser?.uid!!)
+
+//                mDbRef = FirebaseDatabase.getInstance().getReference()
+//                var chatUser = UserChat(uid=firebaseAuth.currentUser?.uid!!,email=email,username=username)
+//                mDbRef.child("user").child(firebaseAuth.currentUser?.uid!!).setValue(chatUser)
 
                 db.collection("User").document("$email").set(user)
 
@@ -167,6 +165,12 @@ class register_activity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Email already exist"  , Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun addUserToDatabase(username: String, email: String, uid: String) {
+        mDbRef = FirebaseDatabase.getInstance().getReference()
+        var chatUser = UserChat(uid=uid,email=email,username=username)
+        mDbRef.child("user").child(uid).setValue(chatUser)
     }
 
     override fun onBackPressed() {
