@@ -1,19 +1,15 @@
 package com.example.myassignmenttesting.ui.main
 
-import android.app.Notification
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
-import androidx.media.app.NotificationCompat
 import com.example.myassignmenttesting.*
 
 import com.example.myassignmenttesting.databinding.BuyerUserLoginBinding
@@ -148,12 +144,10 @@ class BuyerLoginActivity() : AppCompatActivity() {
     private fun verifyUser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
-            startActivity(Intent(this, navigation_drawer_activity::class.java))
+            startActivity(Intent(this, buyer_profile_activity::class.java))
             finish()
         }
     }
-
-
 }
 
 

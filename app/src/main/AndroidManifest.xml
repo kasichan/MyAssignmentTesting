@@ -119,7 +119,7 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".edit_product_activity"
+            android:name=".new_edit_product"
             android:exported="false">
         </activity>
         <activity

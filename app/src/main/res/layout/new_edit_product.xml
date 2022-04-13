@@ -34,6 +34,7 @@
 
 
                 <EditText
+                    android:inputType="text"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -46,6 +47,7 @@
                     android:layout_height="wrap_content"/>
                 <EditText
                     android:textSize="13sp"
+                    android:inputType="text"
                     android:textStyle="bold"
                     android:textColor="@color/cardview_dark_background"
                     android:text="Product Description Here....."
@@ -59,6 +61,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
+                    android:inputType="numberDecimal"
                     android:text="Product Price"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
@@ -78,6 +81,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:text="Quantity"
+                    android:inputType="number"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:id="@+id/editquanTextView"
@@ -104,9 +108,6 @@
 
 
             </LinearLayout>
-
-
-
         </LinearLayout>
 
     </ScrollView>
