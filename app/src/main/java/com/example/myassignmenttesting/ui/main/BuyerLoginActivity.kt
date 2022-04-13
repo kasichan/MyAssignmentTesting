@@ -144,7 +144,7 @@ class BuyerLoginActivity() : AppCompatActivity() {
     private fun verifyUser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
-            startActivity(Intent(this, upload::class.java))
+            startActivity(Intent(this, navigation_drawer_activity::class.java))
             finish()
         }
     }

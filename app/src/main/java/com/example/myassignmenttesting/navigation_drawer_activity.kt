@@ -23,7 +23,7 @@ class navigation_drawer_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_drawer)
-
+        startActivity(Intent(this, myPurchase::class.java))
         firebaseAuth = FirebaseAuth.getInstance()
 
         drawerLayout = findViewById(R.id.drawerLayout)

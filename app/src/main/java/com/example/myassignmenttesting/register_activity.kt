@@ -2,6 +2,7 @@ package com.example.myassignmenttesting
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -14,6 +15,7 @@ import com.example.myassignmenttesting.ui.main.BuyerLoginActivity
 import com.example.myassignmenttesting.ui.main.SplashScreenActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 
 class register_activity : AppCompatActivity() {
@@ -29,6 +31,8 @@ class register_activity : AppCompatActivity() {
     var address = ""
     var gender = ""
     var age : Int = 0
+    var long : Double = 0.00000
+    var lang : Double = 0.00000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,7 +149,13 @@ class register_activity : AppCompatActivity() {
                 val firebaseUser = firebaseAuth.currentUser
                 //val authEmail = firebaseUser!!.email
                 val status = "activated"
-                val user = User(email, username,password,address,gender,age,status)
+                val geocode = Geocoder(this, Locale.getDefault())
+                if (address.isNotEmpty()){
+                    val addList = geocode.getFromLocationName(address,1)
+                    lang = addList[0].latitude
+                    long = addList[0].longitude
+                }
+                val user = UserMap(email, username,password,address,gender,age,status,long,lang)
 
                 db.collection("User").document("$email").set(user)
 
