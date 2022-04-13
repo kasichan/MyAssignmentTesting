@@ -68,16 +68,16 @@ class Home_Fragment : Fragment() {
 
         val intent = Intent(activity, buy_chat_layout_recycle_activity::class.java)
 
-        binding.chat.setOnClickListener {
-//            Navigation.findNavController(binding).navigate(R.id.action_home_Fragment_to_chat_Fragment)
-            startActivity(intent)
-
-        }
-
-        binding.search_button.setOnClickListener {
-            Navigation.findNavController(binding).navigate(R.id.action_home_Fragment_to_searchFragment2)
-
-        }
+//        binding.chat.setOnClickListener {
+////            Navigation.findNavController(binding).navigate(R.id.action_home_Fragment_to_chat_Fragment)
+//            startActivity(intent)
+//
+//        }
+//
+//        binding.search_button.setOnClickListener {
+//            Navigation.findNavController(binding).navigate(R.id.action_home_Fragment_to_searchFragment2)
+//
+//        }
 
 
 

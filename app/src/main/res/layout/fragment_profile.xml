@@ -37,6 +37,14 @@
                 android:layout_gravity="center"
                 android:text="Chat" />
 
+     <Button
+    android:id="@+id/myPur"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:layout_gravity="center"
+    android:text="My Purchase" />
+
             <Button
                 android:id="@+id/setting"
                 android:layout_width="250dp"

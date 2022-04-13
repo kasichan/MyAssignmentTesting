@@ -66,7 +66,7 @@ class SearchFragment : Fragment() {
             when(it.itemId){
                 R.id.nav_home -> replaceFragment(Home_Fragment(), it.title.toString())
                 R.id.nav_profile -> replaceFragment(ProfileFragment(), it.title.toString())
-                R.id.nav_notification -> replaceFragment(NotificationFragment(), it.title.toString())
+//                R.id.nav_notification -> replaceFragment(NotificationFragment(), it.title.toString())
                 R.id.nav_settings -> replaceFragment(SettingsFragment(), it.title.toString())
                 R.id.nav_chat ->    startActivity(intent)
                 R.id.nav_logout -> logout()

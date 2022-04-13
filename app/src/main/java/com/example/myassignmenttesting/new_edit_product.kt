@@ -45,7 +45,7 @@ class new_edit_product : AppCompatActivity() {
         var catT = intss.getStringExtra("CATT")
         var quanT = intss.getStringExtra("QUANT")
         var imageNameT = intss.getStringExtra("IMGNAMET")
-        var sellerEmail = intss.getStringExtra("SELLEREMAIL")
+        var sellerEmail = intss.getStringExtra("SELLEREMAILT")
 
         val spinner: Spinner = category
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -90,7 +90,7 @@ class new_edit_product : AppCompatActivity() {
                 sellerEmail = sellerEmail
             )
             database.child("Product_images").child("$imageNameT").setValue(edit).addOnSuccessListener {
-                   startActivity(Intent(this,ItemsActivity::class.java))
+                   startActivity(Intent(this,seller_dashboard_activity::class.java))
             }
 
 

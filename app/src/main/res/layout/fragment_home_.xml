@@ -1,153 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
-    tools:context=".buyer_homepage_activity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="search 🔍" />
-
-        <Button
-            android:id="@+id/chat"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20px"
-            android:layout_weight="1"
-            android:text="Chat" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+    tools:context=".ItemsActivity">
     <TextView
-        android:id="@+id/textView54"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:text="Products List"
+        android:textAlignment="center"
         android:layout_marginTop="10dp"
-        android:text="Category"
-        android:textStyle="bold|italic" />
-
-    <LinearLayout
+        android:textSize="19sp"
+        android:textColor="@color/purple_500"
+        android:textStyle="bold"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton19"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="70dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-
-        <ImageButton
-            android:id="@+id/imageButton20"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-
-        <ImageButton
-            android:id="@+id/imageButton21"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-    </LinearLayout>
-
-    <LinearLayout
+        android:layout_height="wrap_content"/>
+    <ProgressBar
+        android:id="@+id/myDataLoaderProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:indeterminateBehavior="cycle"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton22"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="70dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-
-        <ImageButton
-            android:id="@+id/imageButton23"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-
-        <ImageButton
-            android:id="@+id/imageButton24"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView49"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Product"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold|italic" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton25"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="100dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-
-        <ImageButton
-            android:id="@+id/imageButton26"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="40dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/imageButton27"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="100dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-
-        <ImageButton
-            android:id="@+id/imageButton28"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="40dp"
-            app:srcCompat="@drawable/ic_baseline_shopping_bag_24" />
-
-    </LinearLayout>
-
-
-
-
-
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

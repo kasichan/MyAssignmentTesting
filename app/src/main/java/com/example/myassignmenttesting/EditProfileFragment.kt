@@ -77,7 +77,7 @@ class EditProfileFragment : Fragment() {
 
        binding.update.setOnClickListener {
             validateUpdate()
-           Toast.makeText(activity, "oiii", Toast.LENGTH_SHORT).show()
+//           Toast.makeText(activity, "oiii", Toast.LENGTH_SHORT).show()
         }
 
 

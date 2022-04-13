@@ -55,7 +55,7 @@ class ListAdapterMy(var mContext: Context, var productList: MutableList<Product>
                 holder.nameT.text = newList.name
                 holder.descriT.text = newList.description
                 holder.priceT.text = newList.price.toString()
-                holder.categoryT.text = newList.sellerEmail
+                holder.categoryT.text = newList.category
                 holder.quantityT.text = newList.quantity.toString()
 
                 val storageRef =
@@ -76,7 +76,7 @@ class ListAdapterMy(var mContext: Context, var productList: MutableList<Product>
                             val category = newList.category
                             val quantity = newList.quantity.toString()
                             val imageName = newList.imageUrl
-                            val sellerEmail = newList.sellerEmail.toString()
+                            val sellerEmail = newList.sellerEmail
                             val mIntent = Intent(mContext, DetailsActivity::class.java)
 
                             mIntent.putExtra("NAMET", name)

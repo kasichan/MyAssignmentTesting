@@ -28,7 +28,7 @@ class DetailsActivity : AppCompatActivity() {
         var catT = intss.getStringExtra("CATT")
         var quanT = intss.getStringExtra("QUANT")
         var imageNameT = intss.getStringExtra("IMGNAMET")
-        var sellerEmail = intss.getStringExtra("SELLEREMAIL")
+        var sellerEmail = intss.getStringExtra("SELLEREMAILT")
 
         val storageRef = FirebaseStorage.getInstance().reference.child("Product_images/$imgT")
         val localfile = File.createTempFile("tempImage", "jpeg")

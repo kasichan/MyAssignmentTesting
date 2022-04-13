@@ -29,12 +29,20 @@ class seller_dashboard_activity : AppCompatActivity() {
 
         verifyUser()
 
-        binding.chat3.setOnClickListener {
-            startActivity(Intent(this,buy_chat_layout_recycle_activity::class.java))
-        }
+//        binding.chat3.setOnClickListener {
+//            startActivity(Intent(this,buy_chat_layout_recycle_activity::class.java))
+//        }
 
         binding.addProduct.setOnClickListener {
             startActivity(Intent(this,UploadActivity::class.java))
+        }
+
+        binding.myProduct.setOnClickListener {
+            startActivity(Intent(this,myProduct::class.java))
+        }
+
+        binding.shipping.setOnClickListener {
+            startActivity(Intent(this,myPurchase::class.java))
         }
 
 
